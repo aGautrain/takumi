@@ -15,10 +15,10 @@ export class AssetComponent implements OnInit {
   constructor(private route: ActivatedRoute, private coinmarketApi: CoinmarketApiService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(async (params) => {
+    this.route.params.subscribe(async (params: any) => {
       console.info(params['id']);
       this.assetId = params['id'];
-      await this.refreshAssetInfo();
+      // await this.refreshAssetInfo();
     });
   }
 

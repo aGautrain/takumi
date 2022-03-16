@@ -15,6 +15,18 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { MenuComponent } from './menu/menu.component'
 import { HttpClientModule } from '@angular/common/http';
 
+import { GasCardComponent } from './topbar/gas-card/gas-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+
+const materialModules = [
+  MatCardModule,
+  MatSelectModule,
+  MatIconModule
+];
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +38,15 @@ import { HttpClientModule } from '@angular/common/http';
     MarketValueComponent,
     StatsComponent,
     TopbarComponent,
-    MenuComponent
+    MenuComponent,
+    GasCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ...materialModules
   ],
   providers: [],
   bootstrap: [AppComponent]
