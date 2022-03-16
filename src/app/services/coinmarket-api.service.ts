@@ -31,6 +31,8 @@ export class CoinmarketApiService {
 
   private API_ENDPOINT = 'https://pro-api.coinmarketcap.com/v2';
 
+  private SUPPORTED_SLUGS = ['avalanche', 'ethereum', 'bnb', 'fantom', 'polygon'];
+
   private cachePersistency: number = 1000 * 60 * 30; // 30 minutes
   private cryptocurrencyInfosCached: CachedRegistry<CryptocurrencyInfo> = {};
 
@@ -42,10 +44,7 @@ export class CoinmarketApiService {
 
   getCryptocurrencyInfo(id: string): Promise<CryptocurrencyInfo | undefined> {
 
-    console.info(this.cryptocurrencyInfosCached);
     const cached = this.cryptocurrencyInfosCached[id];
-    console.info(cached);
-    console.info('fetching from cache', this.cacheRelevant(cached));
     if (this.cacheRelevant(cached)) return new Promise((resolve) => resolve(cached.value));
     else return this.http.get<{ data: Record<string, CryptocurrencyInfo> }>(this.API_ENDPOINT + '/cryptocurrency/info', {
       params: new HttpParams()
@@ -57,9 +56,21 @@ export class CoinmarketApiService {
         map(res => {
           const info = res?.data[id];
           this.cryptocurrencyInfosCached[id] = { date: Date.now(), value: info };
-          console.info(this.cryptocurrencyInfosCached);
           return info;
         }))
+      .toPromise();
+  }
+
+
+  getBlockchainsInfos(): Promise<Record<string,CryptocurrencyInfo> | undefined> {
+
+    return this.http.get<{ data: Record<string, CryptocurrencyInfo> }>(this.API_ENDPOINT + '/cryptocurrency/info', {
+      params: new HttpParams()
+        .set('slug', this.SUPPORTED_SLUGS.join(','))
+        .set('aux', 'urls,logo,description,tags,platform,date_added,notice,status')
+        .set('CMC_PRO_API_KEY', this.API_KEY)
+    })
+      .pipe(map(res => res?.data))
       .toPromise();
   }
 }

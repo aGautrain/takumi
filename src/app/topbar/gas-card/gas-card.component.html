@@ -1,0 +1,23 @@
+<mat-card>
+
+    <h4>Prix du gas en temps réel</h4>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Crypto</mat-label>
+        <mat-select [(value)]="selectedCrypto">
+            <mat-option *ngFor="let crypto of cryptos" class="crypto-option" [value]="crypto.id">
+              <img *ngIf="crypto.logo" [src]="crypto.logo" class="crypto-logo" /> {{ crypto.name }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      {{ selectedCrypto }}
+
+
+
+
+
+</mat-card>
+
+en dehors
