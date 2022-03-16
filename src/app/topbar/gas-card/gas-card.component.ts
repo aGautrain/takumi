@@ -1,23 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { CoinmarketApiService, CryptocurrencyInfo } from 'src/app/services/coinmarket-api.service';
-import Web3 from 'web3';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {CoinmarketApiService, CryptocurrencyInfo} from 'src/app/services/coinmarket-api.service';
+import {FormControl} from "@angular/forms";
 
-
-interface Crypto {
-  logo: string;
-  id: string;
-  name: string;
-  slug: string;
-}
 
 @Component({
   selector: 'app-gas-card',
   templateUrl: './gas-card.component.html',
-  styleUrls: ['./gas-card.component.css']
+  styleUrls: ['./gas-card.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GasCardComponent implements OnInit {
 
-  selectedCrypto: string = '1';
+  selectedCryptoFormControl: FormControl = new FormControl();
+  selectedCrypto: CryptocurrencyInfo | undefined = undefined;
 
   cryptos: CryptocurrencyInfo[] = [];
 
@@ -25,22 +20,24 @@ export class GasCardComponent implements OnInit {
 
   async ngOnInit() {
 
-    await this.initEthereum();
+    this.selectedCryptoFormControl.valueChanges.subscribe((id) => {
+      this.selectedCrypto = this.cryptos.find(crypto => crypto.id === id);
+    });
 
     const blockchainsInfos = await this.coinmarketApi.getBlockchainsInfos();
-
     if (blockchainsInfos) this.cryptos = Object.values(blockchainsInfos);
 
-    console.info(blockchainsInfos);
+    if (this.cryptos?.length) {
+      this.selectedCryptoFormControl.setValue(this.cryptos[0].id);
 
-
-    this.cryptos = this.cryptos.map((crypto) => ({
-      ...crypto,
-      name: crypto.name.charAt(0).toUpperCase() + crypto.name.slice(1).toLowerCase()
-    }));
+      this.cryptos = this.cryptos.map((crypto) => ({
+        ...crypto,
+        name: crypto.name.charAt(0).toUpperCase() + crypto.name.slice(1).toLowerCase()
+      }));
+    }
   }
 
-  async initEthereum() {
+  /*async initEthereum() {
     if (typeof (window as any).ethereum !== 'undefined') {
       // Instance web3 with the provided information
       const web3 = new Web3((window as any).ethereum);
@@ -55,6 +52,6 @@ export class GasCardComponent implements OnInit {
       }
     }
     return false;
-  }
+  }*/
 
 }

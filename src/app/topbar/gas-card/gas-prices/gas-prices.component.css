@@ -1,0 +1,23 @@
+
+.gas-list {
+  font-weight: bold;
+  padding-top: 0;
+}
+
+.gas-list .mat-list-item-content {
+  padding: 0 !important;
+}
+
+.gas-list .gas-list-row {
+  width: 100% !important;
+}
+
+.gas-list mat-list-item mat-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+  color: rgba(110, 110, 110, .7);
+}
+
+.gas-list .gas-price {
+  font-weight: normal;
+}

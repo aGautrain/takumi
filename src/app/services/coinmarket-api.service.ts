@@ -1,20 +1,16 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import {cryptocurrenciesMocked} from "./cryptocurrencies.mock";
 
 
 export interface CryptocurrencyInfo {
-  urls: Record<string, string>;
-  logo: string;
   id: number;
   name: string;
   symbol: string;
+  logo: string;
   slug: string;
   description: string;
-  date_added: string;
-  date_launched: string;
-  tags: string[];
-  platform: string;
   category: string;
 }
 
@@ -34,7 +30,7 @@ export class CoinmarketApiService {
   private SUPPORTED_SLUGS = ['avalanche', 'ethereum', 'bnb', 'fantom', 'polygon'];
 
   private cachePersistency: number = 1000 * 60 * 30; // 30 minutes
-  private cryptocurrencyInfosCached: CachedRegistry<CryptocurrencyInfo> = {};
+  private cryptocurrencyInfosCached: CachedRegistry<Required<CryptocurrencyInfo>> = {};
 
   constructor(private http: HttpClient) { }
 
@@ -62,7 +58,9 @@ export class CoinmarketApiService {
   }
 
 
-  getBlockchainsInfos(): Promise<Record<string,CryptocurrencyInfo> | undefined> {
+  getBlockchainsInfos(): Promise<Record<string,Required<CryptocurrencyInfo>> | undefined> {
+
+    return new Promise((res) => res(cryptocurrenciesMocked));
 
     return this.http.get<{ data: Record<string, CryptocurrencyInfo> }>(this.API_ENDPOINT + '/cryptocurrency/info', {
       params: new HttpParams()
