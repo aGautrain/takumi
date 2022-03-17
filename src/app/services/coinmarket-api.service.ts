@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import {cryptocurrenciesMocked} from "./cryptocurrencies.mock";
+import { environment } from 'src/environments/environment';
+import { cryptocurrenciesMocked } from "./cryptocurrencies.mock";
 
 
 export interface CryptocurrencyInfo {
@@ -23,7 +24,7 @@ export class CoinmarketApiService {
 
   // we should use an environment variable instead of writing API KEY
   // to avoid leaks when exposing the code (github, etc.)
-  private API_KEY = '50ec345e-bc25-4a84-b481-919f35f5c14e';
+  private API_KEY = environment.coinmarketApiKey;
 
   private API_ENDPOINT = 'https://pro-api.coinmarketcap.com/v2';
 
@@ -58,7 +59,7 @@ export class CoinmarketApiService {
   }
 
 
-  getBlockchainsInfos(): Promise<Record<string,Required<CryptocurrencyInfo>> | undefined> {
+  getBlockchainsInfos(): Promise<Record<string, Required<CryptocurrencyInfo>> | undefined> {
 
     return new Promise((res) => res(cryptocurrenciesMocked));
 

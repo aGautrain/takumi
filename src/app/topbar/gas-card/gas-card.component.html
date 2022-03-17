@@ -1,19 +1,19 @@
 <mat-card>
 
-    <h4>Prix du gas en temps réel</h4>
+  <h4>Prix du gas en temps réel</h4>
 
-    <mat-form-field class="gas-select" appearance="outline">
-        <mat-label>Asset</mat-label>
-        <mat-select [formControl]="selectedCryptoFormControl">
-            <mat-option *ngFor="let crypto of cryptos" class="crypto-option" [value]="crypto.id">
-              <img *ngIf="crypto.logo" [src]="crypto.logo" class="crypto-logo" /> {{ crypto.name }}
-            </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <mat-form-field class="gas-select" appearance="outline">
+    <mat-label>Asset</mat-label>
+    <mat-select [formControl]="selectedCryptoFormControl">
+      <mat-option *ngFor="let crypto of cryptos" class="crypto-option" [value]="crypto.id">
+        <img *ngIf="crypto.logo" [src]="crypto.logo" class="crypto-logo" /> {{ crypto.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <img *ngIf="selectedCrypto?.logo" [src]="selectedCrypto?.logo" class="crypto-logo-background" />
 
-  <app-gas-prices></app-gas-prices>
+  <app-gas-prices [crypto]="selectedCrypto?.symbol"></app-gas-prices>
 
 
 </mat-card>

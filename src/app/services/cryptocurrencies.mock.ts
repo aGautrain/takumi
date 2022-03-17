@@ -1,4 +1,4 @@
-import {CryptocurrencyInfo} from "./coinmarket-api.service";
+import { CryptocurrencyInfo } from "./coinmarket-api.service";
 
 export const cryptocurrenciesMocked: Record<string, Required<CryptocurrencyInfo>> = {
   "1027": {
