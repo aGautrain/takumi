@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { CoinGeckoAPIService, CryptocurrencyChartData } from '../services/coingecko-api.service';
 import { CoinmarketApiService, CryptocurrencyInfo } from '../services/coinmarket-api.service';
+import { FiatUnitService } from '../services/fiat-unit.service';
 
 @Component({
   selector: 'app-asset',
@@ -9,23 +12,56 @@ import { CoinmarketApiService, CryptocurrencyInfo } from '../services/coinmarket
 })
 export class AssetComponent implements OnInit {
 
-  assetId: string = '';
+  // symbol used everywhere, inside API service symbol is translated into a platform-specific id
+  symbol: string = '';
+  coinGeckoAssetId: string = '';
   assetInfos: CryptocurrencyInfo | undefined = undefined;
 
-  constructor(private route: ActivatedRoute, private coinmarketApi: CoinmarketApiService) { }
+  chartData: CryptocurrencyChartData | undefined = undefined;
+
+  chartReadyForDisplay: boolean = false;
+  chartLabels: string[] = [];
+  chartPoints: number[] = [];
+  chartTitle: string = '';
+
+  chartFocus: [string, number] | undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private coinmarketApi: CoinmarketApiService,
+    private coingeckoApi: CoinGeckoAPIService,
+    private fiatUnitService: FiatUnitService) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(async (params: any) => {
-      console.info(params['id']);
-      this.assetId = params['id'];
-      // await this.refreshAssetInfo();
+      this.chartReadyForDisplay = false;
+      this.symbol = params['symbol'];
+
+
+      await this.refreshAssetInfo();
+
+      this.chartData = await this.coingeckoApi.getCryptocurrencyChart(this.symbol);
+      this.chartTitle = `${this.symbol} (${this.fiatUnitService.getSymbol()})`;
+
+      this.chartLabels = this.chartData.prices.map(([date, _]) => new Date(date).toDateString());
+      this.chartPoints = this.chartData.prices.map(([_, price]) => price);
+      this.chartReadyForDisplay = !!(this.chartLabels?.length && this.chartPoints?.length);
     });
   }
 
   async refreshAssetInfo() {
-    console.info('loading asset infos');
-    this.assetInfos = await this.coinmarketApi.getCryptocurrencyInfo(this.assetId);
-    console.info(this.assetInfos)
+    const assets = await this.coinmarketApi.getBlockchainsInfos();
+
+    const asset = Object.values(assets).find((asset: CryptocurrencyInfo) => {
+      return this.symbol?.toLowerCase() === asset?.symbol?.toLowerCase();
+    });
+
+    this.assetInfos = asset;
+  }
+
+  onChartFocus(change: [string, number]) {
+    this.chartFocus = change;
   }
 
 }

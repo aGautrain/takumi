@@ -1,0 +1,34 @@
+app-line-chart {
+    margin: auto;
+}
+
+
+app-price-card {
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.title img {
+    vertical-align: middle;
+    margin-right: .5rem;
+    width: 3rem;
+    height: auto;
+}
+
+.title-symbol {
+    font-size: large;
+}
+
+.card-description {
+    text-align: justify;
+    line-height: 1.5;
+    height: fit-content;
+}
+
+.loading mat-spinner {
+    display: block; margin: 5rem auto;
+}

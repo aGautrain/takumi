@@ -1,0 +1,12 @@
+mat-drawer {
+    width: 200px;
+}
+
+mat-nav-list {
+    padding-top: 0;
+    font-family: 'Times New Roman';
+}
+
+mat-drawer-content {
+    padding-bottom: 10rem;
+}

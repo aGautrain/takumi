@@ -4,7 +4,7 @@ import { AssetComponent } from './asset/asset.component';
 import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
-  { path: 'asset/:id', component: AssetComponent },
+  { path: 'asset/:symbol', component: AssetComponent },
   { path: 'overview', component: OverviewComponent }
 ];
 

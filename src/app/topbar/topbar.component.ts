@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from "@angular/forms";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-topbar',
@@ -9,8 +9,11 @@ import {FormControl} from "@angular/forms";
 export class TopbarComponent implements OnInit {
 
   showGasPrices: boolean = false;
+  showUnit: boolean = false;
   showAdressField: boolean = false;
   addressFormControl: FormControl = new FormControl('');
+
+  @Output() switchMenuStatus: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 

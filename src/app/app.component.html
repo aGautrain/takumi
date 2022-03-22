@@ -1,3 +1,19 @@
 <app-topbar></app-topbar>
 
-<router-outlet></router-outlet>
+<mat-drawer-container>
+    <mat-drawer mode="side" opened>
+
+        <mat-nav-list role="list">
+            <a mat-list-item routerLink="/overview">Vue d'ensemble</a>
+            <a mat-list-item routerLink="/asset/eth">Ethereum</a>
+            <a mat-list-item routerLink="/asset/avax">Avalanche</a>
+            <a mat-list-item routerLink="/asset/bnb">BNB</a>
+            <a mat-list-item routerLink="/asset/ftm">Fantom</a>
+            <a mat-list-item routerLink="/asset/matic">Polygon</a>
+        </mat-nav-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

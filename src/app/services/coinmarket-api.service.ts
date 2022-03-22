@@ -39,27 +39,7 @@ export class CoinmarketApiService {
     return dataCached && dataCached.date > Date.now() - this.cachePersistency
   }
 
-  getCryptocurrencyInfo(id: string): Promise<CryptocurrencyInfo | undefined> {
-
-    const cached = this.cryptocurrencyInfosCached[id];
-    if (this.cacheRelevant(cached)) return new Promise((resolve) => resolve(cached.value));
-    else return this.http.get<{ data: Record<string, CryptocurrencyInfo> }>(this.API_ENDPOINT + '/cryptocurrency/info', {
-      params: new HttpParams()
-        .set('id', id)
-        .set('aux', 'urls,logo,description,tags,platform,date_added,notice,status')
-        .set('CMC_PRO_API_KEY', this.API_KEY)
-    })
-      .pipe(
-        map(res => {
-          const info = res?.data[id];
-          this.cryptocurrencyInfosCached[id] = { date: Date.now(), value: info };
-          return info;
-        }))
-      .toPromise();
-  }
-
-
-  getBlockchainsInfos(): Promise<Record<string, Required<CryptocurrencyInfo>> | undefined> {
+  getBlockchainsInfos(): Promise<Record<string, CryptocurrencyInfo>> {
 
     return new Promise((res) => res(cryptocurrenciesMocked));
 
@@ -70,6 +50,6 @@ export class CoinmarketApiService {
         .set('CMC_PRO_API_KEY', this.API_KEY)
     })
       .pipe(map(res => res?.data))
-      .toPromise();
+      .toPromise() as Promise<Record<string, CryptocurrencyInfo>>;
   }
 }

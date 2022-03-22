@@ -16,24 +16,31 @@ import { MenuComponent } from './menu/menu.component'
 import { HttpClientModule } from '@angular/common/http';
 
 import { GasCardComponent } from './topbar/gas-card/gas-card.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatListModule} from "@angular/material/list";
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatListModule } from "@angular/material/list";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { GasPricesComponent } from './topbar/gas-card/gas-prices/gas-prices.component';
-import {MatInputModule} from "@angular/material/input";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {OverlayModule} from "@angular/cdk/overlay";
+import { MatInputModule } from "@angular/material/input";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { OverlayModule } from "@angular/cdk/overlay";
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { LineChartComponent } from './asset/line-chart/line-chart.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PriceCardComponent } from './asset/price-card/price-card.component';
+import { FiatCurrencyUnitCardComponent } from './topbar/fiat-currency-unit-card/fiat-currency-unit-card.component';
 
 const materialModules = [
+  MatProgressSpinnerModule,
   MatCardModule,
   MatSelectModule,
   MatIconModule,
   FlexLayoutModule,
-  MatListModule
+  MatListModule,
+  MatSidenavModule
 ];
 
 
@@ -50,7 +57,10 @@ const materialModules = [
     TopbarComponent,
     MenuComponent,
     GasCardComponent,
-    GasPricesComponent
+    GasPricesComponent,
+    LineChartComponent,
+    PriceCardComponent,
+    FiatCurrencyUnitCardComponent
   ],
   imports: [
     BrowserModule,
