@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { FiatUnitService } from 'src/app/services/fiat-unit.service';
 
 @Component({
   selector: 'app-price-card',
@@ -12,7 +10,7 @@ export class PriceCardComponent implements OnInit {
   @Input() price: number = 0;
   @Input() comparisonPrice: number = 0;
 
-  constructor(public fiatUnitService: FiatUnitService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

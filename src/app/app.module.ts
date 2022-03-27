@@ -31,7 +31,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LineChartComponent } from './asset/line-chart/line-chart.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PriceCardComponent } from './asset/price-card/price-card.component';
-import { FiatCurrencyUnitCardComponent } from './topbar/fiat-currency-unit-card/fiat-currency-unit-card.component';
+import {MatTableModule} from "@angular/material/table";
+import { NftsComponent } from './overview/nfts/nfts.component';
 
 const materialModules = [
   MatProgressSpinnerModule,
@@ -60,7 +61,7 @@ const materialModules = [
     GasPricesComponent,
     LineChartComponent,
     PriceCardComponent,
-    FiatCurrencyUnitCardComponent
+    NftsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,8 @@ const materialModules = [
     MatInputModule,
     MatToolbarModule,
     MatButtonModule,
-    OverlayModule
+    OverlayModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

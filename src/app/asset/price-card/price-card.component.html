@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title>{{ price | number: '1.2-2' }}{{ fiatUnitService.symbol$ | async }}</mat-card-title>
+    <mat-card-title>{{ price | number: '1.2-2' }}€</mat-card-title>
     Évolution sur 30 jours:
     <b [class.trending-up]="getTrending() > 0" [class.trending-down]="getTrending() < 0 ">
         {{ getTrending() > 0 ? '+' : '-' }}{{ getTrending(true) | number: '1.2-2' }}%

@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+table .asset-logo { width: 1.2rem; vertical-align: middle; }
+
+table .mat-row:hover { background-color: rgba(200, 200, 200, .2); cursor: pointer; }
+
+.wallet-value { font-size: 1.2rem; }
+.wallet-value mat-icon { vertical-align: middle; margin-right: .5rem; }
+.wallet-value--text { position: relative; top: 2px; }
+

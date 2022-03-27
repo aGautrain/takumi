@@ -13,7 +13,7 @@
       #trigger="cdkOverlayOrigin">
       <mat-icon>local_gas_station</mat-icon>
     </button>
-    <button mat-button color="primary" (click)="showUnit = !showUnit" cdkOverlayOrigin #triggerUnit="cdkOverlayOrigin">
+    <button mat-button color="primary">
       <mat-icon>account_balance</mat-icon>
       &nbsp;EURO
     </button>
@@ -36,8 +36,4 @@
 
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showGasPrices">
   <app-gas-card *ngIf="showGasPrices"></app-gas-card>
-</ng-template>
-
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="triggerUnit" [cdkConnectedOverlayOpen]="showUnit">
-  <app-fiat-currency-unit-card *ngIf="showUnit"></app-fiat-currency-unit-card>
 </ng-template>

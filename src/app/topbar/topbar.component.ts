@@ -9,7 +9,6 @@ import { FormControl } from "@angular/forms";
 export class TopbarComponent implements OnInit {
 
   showGasPrices: boolean = false;
-  showUnit: boolean = false;
   showAdressField: boolean = false;
   addressFormControl: FormControl = new FormControl('');
 

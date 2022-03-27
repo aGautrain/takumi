@@ -9,13 +9,12 @@ app-price-card {
 
 .title {
     text-align: center;
-    font-size: 3rem;
 }
 
 .title img {
     vertical-align: middle;
-    margin-right: .5rem;
-    width: 3rem;
+    margin-right: .2rem;
+    width: 2rem;
     height: auto;
 }
 

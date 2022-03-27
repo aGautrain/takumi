@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable } from 'rxjs';
 import { CoinGeckoAPIService, CryptocurrencyChartData } from '../services/coingecko-api.service';
 import { CoinmarketApiService, CryptocurrencyInfo } from '../services/coinmarket-api.service';
-import { FiatUnitService } from '../services/fiat-unit.service';
 
 @Component({
   selector: 'app-asset',
@@ -14,7 +12,6 @@ export class AssetComponent implements OnInit {
 
   // symbol used everywhere, inside API service symbol is translated into a platform-specific id
   symbol: string = '';
-  coinGeckoAssetId: string = '';
   assetInfos: CryptocurrencyInfo | undefined = undefined;
 
   chartData: CryptocurrencyChartData | undefined = undefined;
@@ -29,8 +26,7 @@ export class AssetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private coinmarketApi: CoinmarketApiService,
-    private coingeckoApi: CoinGeckoAPIService,
-    private fiatUnitService: FiatUnitService) { }
+    private coingeckoApi: CoinGeckoAPIService) { }
 
   ngOnInit(): void {
 
@@ -38,14 +34,14 @@ export class AssetComponent implements OnInit {
       this.chartReadyForDisplay = false;
       this.symbol = params['symbol'];
 
-
       await this.refreshAssetInfo();
 
       this.chartData = await this.coingeckoApi.getCryptocurrencyChart(this.symbol);
-      this.chartTitle = `${this.symbol} (${this.fiatUnitService.getSymbol()})`;
+      this.chartTitle = `${this.symbol} (€)`;
 
       this.chartLabels = this.chartData.prices.map(([date, _]) => new Date(date).toDateString());
       this.chartPoints = this.chartData.prices.map(([_, price]) => price);
+      this.resetChartFocus();
       this.chartReadyForDisplay = !!(this.chartLabels?.length && this.chartPoints?.length);
     });
   }
@@ -58,6 +54,12 @@ export class AssetComponent implements OnInit {
     });
 
     this.assetInfos = asset;
+  }
+
+  resetChartFocus() {
+    if (this.chartLabels?.length && this.chartPoints?.length) {
+      this.chartFocus = [this.chartLabels[this.chartLabels.length - 1], this.chartPoints[this.chartPoints.length - 1]];
+    }
   }
 
   onChartFocus(change: [string, number]) {
