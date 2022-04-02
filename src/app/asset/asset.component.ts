@@ -47,7 +47,7 @@ export class AssetComponent implements OnInit {
   }
 
   async refreshAssetInfo() {
-    const assets = await this.coinmarketApi.getBlockchainsInfos();
+    const assets = await this.coinmarketApi.getCryptosInfos();
 
     const asset = Object.values(assets).find((asset: CryptocurrencyInfo) => {
       return this.symbol?.toLowerCase() === asset?.symbol?.toLowerCase();

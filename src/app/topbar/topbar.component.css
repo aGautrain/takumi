@@ -13,3 +13,7 @@
 mat-toolbar {
   border-bottom: solid gray 1px;
 }
+
+.address {
+  font-weight: lighter;
+}

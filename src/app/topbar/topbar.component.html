@@ -5,34 +5,33 @@
     </button>
     <h2 class="title">Takumi App</h2>
     <span class="example-spacer"></span>
-    <button mat-icon-button color="primary" (click)="showAdressField = !showAdressField" cdkOverlayOrigin
-      #searchTrigger="cdkOverlayOrigin">
+
+    <button mat-button color="primary" (click)="openAddressDialog()">
       <mat-icon>search</mat-icon>
+      <ng-container *ngIf="walletService.getAddress() as address; else login">
+        Connecté en tant que&nbsp;<span class="address">{{ address }}</span>
+      </ng-container>
+
+      <ng-template #login>
+        Cliquez-ici pour vous connecter
+      </ng-template>
     </button>
+
     <button mat-icon-button color="primary" (click)="showGasPrices = !showGasPrices" cdkOverlayOrigin
       #trigger="cdkOverlayOrigin">
       <mat-icon>local_gas_station</mat-icon>
     </button>
+
     <button mat-button color="primary">
       <mat-icon>account_balance</mat-icon>
       &nbsp;EURO
     </button>
+
     <button mat-icon-button color="primary">
       <mat-icon>share</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="searchTrigger" [cdkConnectedOverlayOpen]="showAdressField"
-  [cdkConnectedOverlayWidth]="500" [cdkConnectedOverlayOffsetY]="20">
-  <mat-form-field class="search-field" appearance="outline">
-    <mat-label>Adresse</mat-label>
-    <input matInput [formControl]="addressFormControl" type="text" autocomplete="off">
-    <button [disabled]="!addressFormControl?.value" matSuffix mat-icon-button>
-      <mat-icon>check</mat-icon>
-    </button>
-  </mat-form-field>
-</ng-template>
 
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showGasPrices">
   <app-gas-card *ngIf="showGasPrices"></app-gas-card>

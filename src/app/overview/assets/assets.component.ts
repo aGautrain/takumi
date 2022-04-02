@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Asset, WalletService} from "../../services/wallet.service";
+import {map} from "rxjs/operators";
 
-export interface Blockchain {
-  name: string;
-}
 
-export interface Asset {
-  symbol: string;
-  logo: string;
-  name: string;
-  price: number;
-  quantity: number;
-  value: number;
-  origin?: Blockchain;
-}
+
 
 const ASSETS: Asset[] = [
   {
@@ -33,11 +24,18 @@ const ASSETS: Asset[] = [
 export class AssetsComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'price', 'quantity', 'value'];
-  dataSource = ASSETS;
+  dataSource: Array<Partial<Asset>> = [];
 
-  constructor() { }
+  constructor(private wallet: WalletService) { }
 
   ngOnInit(): void {
+
+    this.wallet.onRefresh$.pipe(
+      map(() => {
+        this.dataSource = Object.values(this.wallet.assets);
+      })
+    ).subscribe();
+
   }
 
 }

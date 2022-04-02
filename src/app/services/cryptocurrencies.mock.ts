@@ -1,5 +1,5 @@
 import { CryptocurrencyChartData } from "./coingecko-api.service";
-import { CryptocurrencyInfo } from "./coinmarket-api.service";
+import {CryptocurrencyInfo, CryptocurrencyMarketInfo} from "./coinmarket-api.service";
 
 export const etherChartMocked: CryptocurrencyChartData = {
   "prices": [
@@ -427,5 +427,154 @@ export const cryptocurrenciesMocked: Record<string, Required<CryptocurrencyInfo>
     "description": "Avalanche (AVAX) is a cryptocurrency launched in 2018. Avalanche has a current supply of 395,891,289.9134107 with 266,620,626.03777802 in circulation. The last known price of Avalanche is 70.9572773 USD and is up 0.54 over the last 24 hours. It is currently trading on 210 active market(s) with $1,030,336,914.91 traded over the last 24 hours. More information can be found at https://avax.network/.",
     "slug": "avalanche",
     "logo": "https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png",
+  }
+}
+
+
+export const cryptocurrenciesMarketDataMocked: Record<string, { quote: { EUR: CryptocurrencyMarketInfo } }> = {
+  "1027": {
+    /*"id": 1027,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "slug": "ethereum",
+    "max_supply": null,
+    "circulating_supply": 120212903.3115,
+    "cmc_rank": 2,
+    "self_reported_circulating_supply": null,
+    "self_reported_market_cap": null,
+    "last_updated": "2022-04-02T13:04:00.000Z",*/
+    "quote": {
+      "EUR": {
+        "price": 3176.6744069165075,
+        "volume_24h": 23407851100.948624,
+        "volume_change_24h": 23.3838,
+        "percent_change_1h": 0.47750819,
+        "percent_change_24h": 5.19231092,
+        "percent_change_7d": 10.55302766,
+        "percent_change_30d": 20.40280879,
+        "percent_change_60d": 26.19828256,
+        "percent_change_90d": -6.46360301,
+        "market_cap": 381877253330.7707,
+        "market_cap_dominance": 19.4057,
+        "fully_diluted_market_cap": 381877253330.77374,
+        "last_updated": "2022-04-02T13:05:13.000Z"
+      }
+    }
+  },
+  "1839": {
+    /*"id": 1839,
+    "name": "BNB",
+    "symbol": "BNB",
+    "slug": "bnb",
+    "max_supply": 165116760,
+    "circulating_supply": 165116760.89,
+    "cmc_rank": 4,
+    "self_reported_circulating_supply": null,
+    "self_reported_market_cap": null,
+    "last_updated": "2022-04-02T13:04:00.000Z",*/
+    "quote": {
+      "EUR": {
+        "price": 406.4753138758277,
+        "volume_24h": 2247097121.0238466,
+        "volume_change_24h": -12.5913,
+        "percent_change_1h": 0.12452078,
+        "percent_change_24h": 2.64438894,
+        "percent_change_7d": 6.72955956,
+        "percent_change_30d": 9.12464393,
+        "percent_change_60d": 16.66712523,
+        "percent_change_90d": -14.32306852,
+        "market_cap": 67115887208.92273,
+        "market_cap_dominance": 3.4106,
+        "fully_diluted_market_cap": 67115886847.15656,
+        "last_updated": "2022-04-02T13:05:13.000Z"
+      }
+    }
+  },
+  "3513": {
+    /*"id": 3513,
+    "name": "Fantom",
+    "symbol": "FTM",
+    "slug": "fantom",
+    "max_supply": 3175000000,
+    "circulating_supply": 2545006273,
+    "cmc_rank": 42,
+    "self_reported_circulating_supply": null,
+    "self_reported_market_cap": null,
+    "last_updated": "2022-04-02T13:04:00.000Z",*/
+    "quote": {
+      "EUR": {
+        "price": 1.4814297080769652,
+        "volume_24h": 1099759059.0550191,
+        "volume_change_24h": -26.6496,
+        "percent_change_1h": -1.14893575,
+        "percent_change_24h": 5.13234895,
+        "percent_change_7d": 17.46563908,
+        "percent_change_30d": -13.26044068,
+        "percent_change_60d": -22.04297598,
+        "percent_change_90d": -33.70427684,
+        "market_cap": 3770247900.064435,
+        "market_cap_dominance": 0.1916,
+        "fully_diluted_market_cap": 4703539323.140822,
+        "last_updated": "2022-04-02T13:05:13.000Z"
+      }
+    }
+  },
+  "3890": {
+    /*"id": 3890,
+    "name": "Polygon",
+    "symbol": "MATIC",
+    "slug": "polygon",
+    "max_supply": 10000000000,
+    "circulating_supply": 7758492080.62,
+    "cmc_rank": 16,
+    "self_reported_circulating_supply": null,
+    "self_reported_market_cap": null,
+    "last_updated": "2022-04-02T13:04:00.000Z",*/
+    "quote": {
+      "EUR": {
+        "price": 1.5463296732843959,
+        "volume_24h": 718031171.3734491,
+        "volume_change_24h": -24.9312,
+        "percent_change_1h": 0.40882929,
+        "percent_change_24h": 2.91838747,
+        "percent_change_7d": 5.58610923,
+        "percent_change_30d": 5.63505974,
+        "percent_change_60d": 2.65896364,
+        "percent_change_90d": -32.57186959,
+        "market_cap": 11997186524.204697,
+        "market_cap_dominance": 0.6098,
+        "fully_diluted_market_cap": 15463296732.84395,
+        "last_updated": "2022-04-02T13:05:13.000Z"
+      }
+    }
+  },
+  "5805": {
+    /*"id": 5805,
+    "name": "Avalanche",
+    "symbol": "AVAX",
+    "slug": "avalanche",
+    "max_supply": null,
+    "circulating_supply": 267358696.33740106,
+    "cmc_rank": 10,
+    "self_reported_circulating_supply": null,
+    "self_reported_market_cap": null,
+    "last_updated": "2022-04-02T13:04:00.000Z",*/
+    "quote": {
+      "EUR": {
+        "price": 93.1544968621067,
+        "volume_24h": 1567801083.7488332,
+        "volume_change_24h": -13.0951,
+        "percent_change_1h": 1.21739166,
+        "percent_change_24h": 8.80191385,
+        "percent_change_7d": 19.16177728,
+        "percent_change_30d": 24.91684217,
+        "percent_change_60d": 45.84359388,
+        "percent_change_90d": -11.08367556,
+        "market_cap": 24905664839.019363,
+        "market_cap_dominance": 1.2659,
+        "fully_diluted_market_cap": 36879053923.9787,
+        "last_updated": "2022-04-02T13:05:13.000Z"
+      }
+    }
   }
 }
