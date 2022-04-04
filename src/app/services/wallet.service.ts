@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {EtherscanApiService} from "./explorers/etherscan-api.service";
 import {CoinmarketApiService} from "./coinmarket-api.service";
-import {SymbolToIdService} from "./symbol-to-id.service";
 import {Observable, Subject} from "rxjs";
 import {NftsApiService, OwnedNFT} from "./explorers/nfts-api.service";
 import {nftsMocked} from "./cryptocurrencies.mock";
+import { AvaxApiService } from './explorers/avax-api.service';
 
 export enum SupportedSymbol {
   Avalanche = 'AVAX',
@@ -54,10 +54,15 @@ export class WalletService {
 
   constructor(private coinmarketApi: CoinmarketApiService,
               private etherscanApi: EtherscanApiService,
+              private avaxApi: AvaxApiService,
               private nftsApi: NftsApiService) { }
 
   private convertWeiToEth(wei: number): number {
     return wei / 1000000000000000000;
+  }
+
+  private convertWavaxToAvax(wavax: number): number {
+    return wavax / 1000000000000000000;
   }
 
   getAddress(): string {
@@ -76,6 +81,11 @@ export class WalletService {
         quantity: this.convertWeiToEth(wei)
       };
 
+      const wavax = await this.avaxApi.getBalance(this.address);
+      this.assets[SupportedSymbol.Avalanche] = {
+        quantity: this.convertWavaxToAvax(wavax)
+      };
+
 
       await this.loadAssetsInfos();
     }
@@ -85,7 +95,6 @@ export class WalletService {
     if (!this.assets) return;
 
     const infos = await this.coinmarketApi.getCryptosInfos(Object.keys(this.assets));
-    console.info(infos);
 
     // populating assets infos from coinmarket result
     Object.entries(infos).forEach(([symbol, cryptoInfos]) => {
@@ -116,8 +125,6 @@ export class WalletService {
       }
     });
 
-    console.info(this.assets);
-
     this.onRefresh$$.next();
 
   }
@@ -127,7 +134,6 @@ export class WalletService {
     if (!this.address) return;
 
     const collection = await this.nftsApi.getNFTS(this.address);
-    console.info(collection);
     if (collection?.ownedNfts) this.nfts = collection.ownedNfts;
   }
 }

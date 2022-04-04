@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 
 
-interface EtherscanBalanceResult {
+export interface EtherscanBalanceResult {
   status: string;
   message: string;
   result: string;
