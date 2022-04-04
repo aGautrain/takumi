@@ -1,11 +1,3 @@
-.trending-up {
-    color: rgb(28,199,96);
-}
-
-.trending-down {
-    color: rgb(255,74,74);
-}
-
 mat-card-title {
     font-size: 3rem;
 }

@@ -1,5 +1,6 @@
 import { CryptocurrencyChartData } from "./coingecko-api.service";
 import {CryptocurrencyInfo, CryptocurrencyMarketInfo} from "./coinmarket-api.service";
+import {NFTCollectionResult} from "./explorers/nfts-api.service";
 
 export const etherChartMocked: CryptocurrencyChartData = {
   "prices": [
@@ -578,3 +579,914 @@ export const cryptocurrenciesMarketDataMocked: Record<string, { quote: { EUR: Cr
     }
   }
 }
+
+export const nftsMocked: any = {
+  "ownedNfts": [
+    {
+      "contract": {
+        "address": "0x6f9eb87f5a5638a3424c68ffae824608671f4ea6"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000195b",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Reactor #6491",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/6491",
+        "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/6491"
+      },
+      "media": [
+        {
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491"
+        }
+      ],
+      "metadata": {
+        "name": "Reactor #6491",
+        "description": "",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491",
+        "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6491",
+        "attributes": [
+          {
+            "value": "Tourmaline",
+            "trait_type": "Reykium Crystal"
+          },
+          {
+            "value": "Hazard",
+            "trait_type": "Interior Color"
+          },
+          {
+            "value": "Crimson",
+            "trait_type": "Container Color"
+          },
+          {
+            "value": "Silver",
+            "trait_type": "Ring Color"
+          },
+          {
+            "value": "Single Node",
+            "trait_type": "Casing"
+          },
+          {
+            "value": "Clean",
+            "trait_type": "Converter"
+          },
+          {
+            "value": "Clip",
+            "trait_type": "Border Ring"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-02-17T21:16:09.947Z"
+    },
+    {
+      "contract": {
+        "address": "0x6f9eb87f5a5638a3424c68ffae824608671f4ea6"
+      },
+      "id": {
+        "tokenId": "0x0000000000000000000000000000000000000000000000000000000000001961",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Reactor #6497",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/6497",
+        "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/6497"
+      },
+      "media": [
+        {
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497"
+        }
+      ],
+      "metadata": {
+        "name": "Reactor #6497",
+        "description": "",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497",
+        "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6497",
+        "attributes": [
+          {
+            "value": "Tourmaline",
+            "trait_type": "Reykium Crystal"
+          },
+          {
+            "value": "Teal",
+            "trait_type": "Interior Color"
+          },
+          {
+            "value": "Royal",
+            "trait_type": "Container Color"
+          },
+          {
+            "value": "Royal",
+            "trait_type": "Ring Color"
+          },
+          {
+            "value": "Bypass",
+            "trait_type": "Casing"
+          },
+          {
+            "value": "Clean",
+            "trait_type": "Converter"
+          },
+          {
+            "value": "Bolt",
+            "trait_type": "Border Ring"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-02-17T21:16:39.928Z"
+    },
+    {
+      "contract": {
+        "address": "0xd7e5cb2c74e72b1f13686510a6a5131701fa9681"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000002b3",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "METAVATARS",
+      "description": "THE ENERGY OF THE SKYPORT IS GENERATING - The Skyport to access P403 will Open Soon !",
+      "tokenUri": {
+        "raw": "https://metavatars.mypinata.cloud/ipfs/QmPEwswfdAFaVGPy8EWRiWvX1XV4KLdpzFmHUNjXSRCPoj",
+        "gateway": "https://ipfs.io/ipfs/QmPEwswfdAFaVGPy8EWRiWvX1XV4KLdpzFmHUNjXSRCPoj"
+      },
+      "media": [
+        {
+          "raw": "https://metavatars.mypinata.cloud/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7",
+          "gateway": "https://ipfs.io/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7"
+        }
+      ],
+      "metadata": {
+        "name": "METAVATARS",
+        "description": "THE ENERGY OF THE SKYPORT IS GENERATING - The Skyport to access P403 will Open Soon !",
+        "image": "https://metavatars.mypinata.cloud/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7"
+      },
+      "timeLastUpdated": "2022-02-18T02:52:03.543Z"
+    },
+    {
+      "contract": {
+        "address": "0xca9e665df8f0f820593ab6be851acc319efdbc53"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000000ca",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Genesis Force #202",
+      "description": "Join the AlphaSkullz Genesis Force in a play-to-yield game. Upgrade your Genesis Force, raid NFTs and share the loot.",
+      "tokenUri": {
+        "raw": "ipfs://QmaSaHML9fDQiiP9j5m2VRkrMV7GkjeLDG8TxvTmVWsNg2/202",
+        "gateway": "https://ipfs.io/ipfs/QmaSaHML9fDQiiP9j5m2VRkrMV7GkjeLDG8TxvTmVWsNg2/202"
+      },
+      "media": [
+        {
+          "raw": "ipfs://Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif",
+          "gateway": "https://ipfs.io/ipfs/Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif"
+        }
+      ],
+      "metadata": {
+        "name": "Genesis Force #202",
+        "description": "Join the AlphaSkullz Genesis Force in a play-to-yield game. Upgrade your Genesis Force, raid NFTs and share the loot.",
+        "image": "ipfs://Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif",
+        "attributes": [
+          {
+            "value": "Unrevealed",
+            "trait_type": "Status"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-03-16T16:46:46.334Z"
+    },
+    {
+      "contract": {
+        "address": "0x495f947276749ce646f68ac8c248420045cb7b5e"
+      },
+      "id": {
+        "tokenId": "0xabf79c99571dc2afa1427f55cd1c3e210943963f000000000000030000000001",
+        "tokenMetadata": {
+          "tokenType": "ERC1155"
+        }
+      },
+      "balance": "1",
+      "title": "Valentine's Day",
+      "description": "We want to share love with all of you for Valentine's Day ! All the funds made by the auction will be donated to a non-profit for charity. ",
+      "tokenUri": {
+        "raw": "https://api.opensea.io/api/v1/metadata/0x495f947276749Ce646f68AC8c248420045cb7b5e/0x{id}",
+        "gateway": "https://api.opensea.io/api/v1/metadata/0x495f947276749ce646f68ac8c248420045cb7b5e/0xabf79c99571dc2afa1427f55cd1c3e210943963f000000000000030000000001"
+      },
+      "media": [
+        {
+          "raw": "https://lh3.googleusercontent.com/BgeYmcDc-qPOh5VQfJKsQZPVt8lFOlvknXaC7DYFUhjP0Vq00wakkias8EIRltnLHUh3Rt1pzHtujIQDk3Xtc2-vzSywutEAn0u9hQ",
+          "gateway": "https://lh3.googleusercontent.com/BgeYmcDc-qPOh5VQfJKsQZPVt8lFOlvknXaC7DYFUhjP0Vq00wakkias8EIRltnLHUh3Rt1pzHtujIQDk3Xtc2-vzSywutEAn0u9hQ"
+        }
+      ],
+      "metadata": {
+        "name": "Valentine's Day",
+        "description": "We want to share love with all of you for Valentine's Day ! All the funds made by the auction will be donated to a non-profit for charity. ",
+        "image": "https://lh3.googleusercontent.com/BgeYmcDc-qPOh5VQfJKsQZPVt8lFOlvknXaC7DYFUhjP0Vq00wakkias8EIRltnLHUh3Rt1pzHtujIQDk3Xtc2-vzSywutEAn0u9hQ"
+      },
+      "timeLastUpdated": "2022-04-04T09:43:18.770Z"
+    },
+    {
+      "contract": {
+        "address": "0x6f9eb87f5a5638a3424c68ffae824608671f4ea6"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000195a",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Reactor #6490",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/6490",
+        "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/6490"
+      },
+      "media": [
+        {
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490"
+        }
+      ],
+      "metadata": {
+        "name": "Reactor #6490",
+        "description": "",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490",
+        "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6490",
+        "attributes": [
+          {
+            "value": "Sapphire",
+            "trait_type": "Reykium Crystal"
+          },
+          {
+            "value": "Shamrock",
+            "trait_type": "Interior Color"
+          },
+          {
+            "value": "Indigo",
+            "trait_type": "Container Color"
+          },
+          {
+            "value": "Shamrock",
+            "trait_type": "Ring Color"
+          },
+          {
+            "value": "Twin Flow",
+            "trait_type": "Casing"
+          },
+          {
+            "value": "Hex Mesh",
+            "trait_type": "Converter"
+          },
+          {
+            "value": "Cross",
+            "trait_type": "Border Ring"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-02-17T21:16:05.686Z"
+    },
+    {
+      "contract": {
+        "address": "0x21f2f2b5b4ede22ec556e166e00ed14bc45d7e70"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000001d",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "CONSORTIUM STONE #29",
+      "description": "The Consortium Stone... The Grail of P403... This stone has the power to give you access to the table of the great instances of METAVATARS !",
+      "tokenUri": {
+        "raw": "https://metavatars.mypinata.cloud/ipfs/QmRnwdAgHrwRv5a1QgprofQKKzpRrWZ5yRC8bSRR5TquEo/29",
+        "gateway": "https://ipfs.io/ipfs/QmRnwdAgHrwRv5a1QgprofQKKzpRrWZ5yRC8bSRR5TquEo/29"
+      },
+      "media": [
+        {
+          "raw": "https://metavatars.mypinata.cloud/ipfs/Qmf51q6UTwJWttpJgjMqk9vwxMWJ22V5khc6rwTN7R5x6o",
+          "gateway": "https://ipfs.io/ipfs/Qmf51q6UTwJWttpJgjMqk9vwxMWJ22V5khc6rwTN7R5x6o"
+        }
+      ],
+      "metadata": {
+        "name": "CONSORTIUM STONE #29",
+        "description": "The Consortium Stone... The Grail of P403... This stone has the power to give you access to the table of the great instances of METAVATARS !",
+        "image": "https://metavatars.mypinata.cloud/ipfs/Qmf51q6UTwJWttpJgjMqk9vwxMWJ22V5khc6rwTN7R5x6o",
+        "attributes": [
+          {
+            "value": "Consortium",
+            "trait_type": "Stone"
+          }
+        ],
+        "stone_number": 29
+      },
+      "timeLastUpdated": "2022-02-16T22:36:43.904Z"
+    },
+    {
+      "contract": {
+        "address": "0x6f9eb87f5a5638a3424c68ffae824608671f4ea6"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000195e",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Reactor #6494",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/6494",
+        "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/6494"
+      },
+      "media": [
+        {
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494"
+        }
+      ],
+      "metadata": {
+        "name": "Reactor #6494",
+        "description": "",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494",
+        "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6494",
+        "attributes": [
+          {
+            "value": "Quartz",
+            "trait_type": "Reykium Crystal"
+          },
+          {
+            "value": "Hazard",
+            "trait_type": "Interior Color"
+          },
+          {
+            "value": "Magenta",
+            "trait_type": "Container Color"
+          },
+          {
+            "value": "Magenta",
+            "trait_type": "Ring Color"
+          },
+          {
+            "value": "Twin Flow",
+            "trait_type": "Casing"
+          },
+          {
+            "value": "Clean",
+            "trait_type": "Converter"
+          },
+          {
+            "value": "Beam",
+            "trait_type": "Border Ring"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-02-17T21:16:24.426Z"
+    },
+    {
+      "contract": {
+        "address": "0xd7e5cb2c74e72b1f13686510a6a5131701fa9681"
+      },
+      "id": {
+        "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000328",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "METAVATARS",
+      "description": "THE ENERGY OF THE SKYPORT IS GENERATING - The Skyport to access P403 will Open Soon !",
+      "tokenUri": {
+        "raw": "https://metavatars.mypinata.cloud/ipfs/QmPEwswfdAFaVGPy8EWRiWvX1XV4KLdpzFmHUNjXSRCPoj",
+        "gateway": "https://ipfs.io/ipfs/QmPEwswfdAFaVGPy8EWRiWvX1XV4KLdpzFmHUNjXSRCPoj"
+      },
+      "media": [
+        {
+          "raw": "https://metavatars.mypinata.cloud/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7",
+          "gateway": "https://ipfs.io/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7"
+        }
+      ],
+      "metadata": {
+        "name": "METAVATARS",
+        "description": "THE ENERGY OF THE SKYPORT IS GENERATING - The Skyport to access P403 will Open Soon !",
+        "image": "https://metavatars.mypinata.cloud/ipfs/QmPyqUsZkdYMWpDbwGb4MNUSoX779TXVn9oWX5E66J1XN7"
+      },
+      "timeLastUpdated": "2022-02-18T03:06:20.242Z"
+    },
+    {
+      "contract": {
+        "address": "0x687a8de830b7c1cdd12bf613f4da14e42ba49174"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000001f8",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "RAANFT Art #504",
+      "description": "RAANFT Art #504",
+      "tokenUri": {
+        "raw": "ipfs://QmQ8sQPWx3m47tvPf8uYRXe6aWTRcQUiS864NvM65ddSMU/504",
+        "gateway": "https://ipfs.io/ipfs/QmQ8sQPWx3m47tvPf8uYRXe6aWTRcQUiS864NvM65ddSMU/504"
+      },
+      "media": [
+        {
+          "raw": "https://gateway.pinata.cloud/ipfs/QmZCjw7GtUakzDm6L4zuCqssh7r14HrWYe6utR6C6Wj7cY/504.png",
+          "gateway": "https://ipfs.io/ipfs/QmZCjw7GtUakzDm6L4zuCqssh7r14HrWYe6utR6C6Wj7cY/504.png"
+        }
+      ],
+      "metadata": {
+        "name": "RAANFT Art #504",
+        "image": "https://gateway.pinata.cloud/ipfs/QmZCjw7GtUakzDm6L4zuCqssh7r14HrWYe6utR6C6Wj7cY/504.png",
+        "description": "RAANFT Art #504",
+        "attributes": [
+          {
+            "value": "BLU",
+            "trait_type": "Backgrounds"
+          },
+          {
+            "value": "Dark",
+            "trait_type": "Skin"
+          },
+          {
+            "value": "Suit",
+            "trait_type": "Clothes"
+          },
+          {
+            "value": "RED glow",
+            "trait_type": "Eyes"
+          },
+          {
+            "value": "Straw Hat",
+            "trait_type": "Hair"
+          },
+          {
+            "value": "Normal",
+            "trait_type": "Mouth"
+          },
+          {
+            "value": "Dollar sign",
+            "trait_type": "Earrings"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-02-17T07:12:40.902Z"
+    },
+    {
+      "contract": {
+        "address": "0x76acf2775374b6b8731aba327447020e9d8ab869"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000003d3",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Space Revolution - #979",
+      "description": "With a limited edition collection of 1000 unique NFTs limited, in collaboration with Exclusible, Louis Moinet is bringing high-end watches to the next dimension with incredible utilities and NFT unlockables. ",
+      "tokenUri": {
+        "raw": "https://metadata.exclusible.com/louismoinet/979",
+        "gateway": "https://metadata.exclusible.com/louismoinet/979"
+      },
+      "media": [
+        {
+          "raw": "",
+          "gateway": ""
+        }
+      ],
+      "metadata": {
+        "name": "Space Revolution - #979",
+        "description": "With a limited edition collection of 1000 unique NFTs limited, in collaboration with Exclusible, Louis Moinet is bringing high-end watches to the next dimension with incredible utilities and NFT unlockables. ",
+        "animation_url": "ipfs://QmYLB28S3kap4LLVkY9rh4HyRKzY4FMFoEwarPmwjZHkgv",
+        "attributes": [
+          {
+            "value": "Mysterious",
+            "trait_type": "Type"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-03-08T14:39:54.388Z"
+    },
+    {
+      "contract": {
+        "address": "0x80581ea8339d682ca5a71e3f561e3ab0e270398e"
+      },
+      "id": {
+        "tokenId": "0x0000000000000000000000000000000000000000000000000000000000000735",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Celestial #1845",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://celestials2.ams3.digitaloceanspaces.com/json/1846.json",
+        "gateway": "https://celestials2.ams3.digitaloceanspaces.com/json/1846.json"
+      },
+      "media": [
+        {
+          "raw": "https://celestials2.ams3.digitaloceanspaces.com/images/1846.jpg",
+          "gateway": "https://celestials2.ams3.digitaloceanspaces.com/images/1846.jpg"
+        }
+      ],
+      "metadata": {
+        "name": "Celestial #1845",
+        "image": "https://celestials2.ams3.digitaloceanspaces.com/images/1846.jpg",
+        "attributes": [
+          {
+            "value": "Dark Metal",
+            "trait_type": "Material"
+          },
+          {
+            "value": "Forged",
+            "trait_type": "Lighting"
+          },
+          {
+            "value": "Dionysus",
+            "trait_type": "God"
+          },
+          {
+            "value": "Atlantian",
+            "trait_type": "Eyes"
+          },
+          {
+            "value": "Bow & Arrow",
+            "trait_type": "Symbol"
+          },
+          {
+            "value": "Veins",
+            "trait_type": "Backplate"
+          },
+          {
+            "value": "Blue",
+            "trait_type": "Theme"
+          }
+        ],
+        "tokenId": 1845,
+        "dna": "bd6269e87a55f29b0788512ef9e7d50c716924e0"
+      },
+      "timeLastUpdated": "2022-02-17T11:55:17.310Z"
+    },
+    {
+      "contract": {
+        "address": "0xd7e5cb2c74e72b1f13686510a6a5131701fa9681"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000032b",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "METAVATARS #811",
+      "description": "Collection of unique 3D NFT to be played. Get ready to cross the Skyport and enter our world with your METAVATARS !",
+      "tokenUri": {
+        "raw": "https://metavatars.mypinata.cloud/ipfs/QmeddU9E74WuBMxYWjjApGinSA2UJqB5ZhD5CTTbP57a3L/811",
+        "gateway": "https://ipfs.io/ipfs/QmeddU9E74WuBMxYWjjApGinSA2UJqB5ZhD5CTTbP57a3L/811"
+      },
+      "media": [
+        {
+          "raw": "https://metavatars.mypinata.cloud/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/811.png",
+          "gateway": "https://ipfs.io/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/811.png"
+        }
+      ],
+      "metadata": {
+        "name": "METAVATARS #811",
+        "description": "Collection of unique 3D NFT to be played. Get ready to cross the Skyport and enter our world with your METAVATARS !",
+        "image": "https://metavatars.mypinata.cloud/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/811.png",
+        "attributes": [
+          {
+            "value": "Koba",
+            "trait_type": "Race"
+          },
+          {
+            "value": "Rare",
+            "trait_type": "Powerness"
+          },
+          {
+            "value": "Tank",
+            "trait_type": "Class"
+          },
+          {
+            "value": "Koba Armor Tank Middle",
+            "trait_type": "Armor"
+          },
+          {
+            "value": "#2",
+            "trait_type": "Armor Variation"
+          },
+          {
+            "value": "Koba Mask",
+            "trait_type": "Helmet"
+          },
+          {
+            "value": "#6",
+            "trait_type": "Helmet Variation"
+          },
+          {
+            "value": "Metaplanium Ultra Gun",
+            "trait_type": "Weapon"
+          },
+          {
+            "value": "Angry Koba",
+            "trait_type": "Emotion"
+          },
+          {
+            "value": "Tear Of Joy",
+            "trait_type": "Background"
+          },
+          {
+            "value": "Original Pride",
+            "trait_type": "Color Scheme"
+          },
+          {
+            "value": "Green",
+            "trait_type": "Eyes"
+          },
+          {
+            "value": "Koba Classic Skin Basic",
+            "trait_type": "Skin"
+          },
+          {
+            "value": "Koba Face Tatoo #6",
+            "trait_type": "Face Tatoo"
+          },
+          {
+            "value": "Koba Body Tatoo #7",
+            "trait_type": "Body Tatoo"
+          }
+        ],
+        "dna": "212.4.2.6.8.0.6.7.2.5000000000.0"
+      },
+      "timeLastUpdated": "2022-03-13T20:21:37.135Z"
+    },
+    {
+      "contract": {
+        "address": "0xd7e5cb2c74e72b1f13686510a6a5131701fa9681"
+      },
+      "id": {
+        "tokenId": "0x000000000000000000000000000000000000000000000000000000000000032a",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "METAVATARS #810",
+      "description": "Collection of unique 3D NFT to be played. Get ready to cross the Skyport and enter our world with your METAVATARS !",
+      "tokenUri": {
+        "raw": "https://metavatars.mypinata.cloud/ipfs/QmeddU9E74WuBMxYWjjApGinSA2UJqB5ZhD5CTTbP57a3L/810",
+        "gateway": "https://ipfs.io/ipfs/QmeddU9E74WuBMxYWjjApGinSA2UJqB5ZhD5CTTbP57a3L/810"
+      },
+      "media": [
+        {
+          "raw": "https://metavatars.mypinata.cloud/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/810.png",
+          "gateway": "https://ipfs.io/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/810.png"
+        }
+      ],
+      "metadata": {
+        "name": "METAVATARS #810",
+        "description": "Collection of unique 3D NFT to be played. Get ready to cross the Skyport and enter our world with your METAVATARS !",
+        "image": "https://metavatars.mypinata.cloud/ipfs/QmYxXRTLhwgjRhV8bDLob2rQBYzxxtDdMZ9NiB1q43iPEV/810.png",
+        "attributes": [
+          {
+            "value": "Koba",
+            "trait_type": "Race"
+          },
+          {
+            "value": "Common",
+            "trait_type": "Powerness"
+          },
+          {
+            "value": "Healer",
+            "trait_type": "Class"
+          },
+          {
+            "value": "Koba Body Suit Healer",
+            "trait_type": "Armor"
+          },
+          {
+            "value": "#2",
+            "trait_type": "Armor Variation"
+          },
+          {
+            "value": "Flash Grenade",
+            "trait_type": "Armor Accessory #1"
+          },
+          {
+            "value": "Shuriken",
+            "trait_type": "Armor Accessory #2"
+          },
+          {
+            "value": "Ether",
+            "trait_type": "Armor Accessory #3"
+          },
+          {
+            "value": "Eyepatch",
+            "trait_type": "Helmet"
+          },
+          {
+            "value": "Classic Koba",
+            "trait_type": "Emotion"
+          },
+          {
+            "value": "Sober Photo",
+            "trait_type": "Background"
+          },
+          {
+            "value": "Ice Age",
+            "trait_type": "Color Scheme"
+          },
+          {
+            "value": "Yellow",
+            "trait_type": "Eyes"
+          },
+          {
+            "value": "Koba Cave Skin Green",
+            "trait_type": "Skin"
+          },
+          {
+            "value": "Koba Face Tatoo #2",
+            "trait_type": "Face Tatoo"
+          },
+          {
+            "value": "Koba Body Tatoo #10",
+            "trait_type": "Body Tatoo"
+          }
+        ],
+        "dna": "010.1.0.0.0.0.2.0.3.3426000000.0"
+      },
+      "timeLastUpdated": "2022-03-06T00:47:04.420Z"
+    },
+    {
+      "contract": {
+        "address": "0xee29700134aab4f45b113e43e29ff06ce10687b7"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000002ff",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Cartoon #767",
+      "description": "A community driven nft project by eur0, celly, mao, york & cloudy. Time flies, and everyone misses Saturday morning cartoons. We are firm believers in the idea that the child in all of us is still present and that we all have the right to express ourselves as we see fit. The world of NFTs is so popular because we all have nostalgic feelings for the things we miss from our childhood. Let us keep our heads in the clouds and continue to dream big.",
+      "tokenUri": {
+        "raw": "https://gateway.pinata.cloud/ipfs/QmdYDbxVuqLcEEAMZpV2k5Y8E4gVUgqcS7hkMEQeQ1YgZu/767.json",
+        "gateway": "https://ipfs.io/ipfs/QmdYDbxVuqLcEEAMZpV2k5Y8E4gVUgqcS7hkMEQeQ1YgZu/767.json"
+      },
+      "media": [
+        {
+          "raw": "https://gateway.pinata.cloud/ipfs/QmWiJV9WcjcN75U8KmRUV9Aft8oYQ4w4HFNs2fpgEaYi82/767.jpg",
+          "gateway": "https://ipfs.io/ipfs/QmWiJV9WcjcN75U8KmRUV9Aft8oYQ4w4HFNs2fpgEaYi82/767.jpg"
+        }
+      ],
+      "metadata": {
+        "name": "Cartoon #767",
+        "image": "https://gateway.pinata.cloud/ipfs/QmWiJV9WcjcN75U8KmRUV9Aft8oYQ4w4HFNs2fpgEaYi82/767.jpg",
+        "description": "A community driven nft project by eur0, celly, mao, york & cloudy. Time flies, and everyone misses Saturday morning cartoons. We are firm believers in the idea that the child in all of us is still present and that we all have the right to express ourselves as we see fit. The world of NFTs is so popular because we all have nostalgic feelings for the things we miss from our childhood. Let us keep our heads in the clouds and continue to dream big.",
+        "attributes": [
+          {
+            "value": "Gold",
+            "trait_type": "Background"
+          },
+          {
+            "value": "Red Jersey",
+            "trait_type": "Body"
+          },
+          {
+            "value": "Cloudy",
+            "trait_type": "Character"
+          },
+          {
+            "value": "3D Glasses",
+            "trait_type": "Face"
+          },
+          {
+            "value": "Purple Beanie",
+            "trait_type": "Hat"
+          },
+          {
+            "value": "Hoops",
+            "trait_type": "Accessory"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-03-04T12:06:10.447Z"
+    },
+    {
+      "contract": {
+        "address": "0xca9e665df8f0f820593ab6be851acc319efdbc53"
+      },
+      "id": {
+        "tokenId": "0x00000000000000000000000000000000000000000000000000000000000000c9",
+        "tokenMetadata": {
+          "tokenType": "ERC721"
+        }
+      },
+      "balance": "1",
+      "title": "Genesis Force #201",
+      "description": "Join the AlphaSkullz Genesis Force in a play-to-yield game. Upgrade your Genesis Force, raid NFTs and share the loot.",
+      "tokenUri": {
+        "raw": "ipfs://QmaSaHML9fDQiiP9j5m2VRkrMV7GkjeLDG8TxvTmVWsNg2/201",
+        "gateway": "https://ipfs.io/ipfs/QmaSaHML9fDQiiP9j5m2VRkrMV7GkjeLDG8TxvTmVWsNg2/201"
+      },
+      "media": [
+        {
+          "raw": "ipfs://Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif",
+          "gateway": "https://ipfs.io/ipfs/Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif"
+        }
+      ],
+      "metadata": {
+        "name": "Genesis Force #201",
+        "description": "Join the AlphaSkullz Genesis Force in a play-to-yield game. Upgrade your Genesis Force, raid NFTs and share the loot.",
+        "image": "ipfs://Qmc7dS4pQ6KQ7PLtjXon3yoWjMmVhEMVcuLSVZ3NRVBvRA/unrevealed.gif",
+        "attributes": [
+          {
+            "value": "Unrevealed",
+            "trait_type": "Status"
+          }
+        ]
+      },
+      "timeLastUpdated": "2022-03-16T16:46:05.308Z"
+    },/* TODO remove token with errors / ERC1155
+    {
+      "contract": {
+        "address": "0xeba867502ef59adbd8bc73fbdb531ed9381b5f97"
+      },
+      "id": {
+        "tokenId": "0",
+        "tokenMetadata": {
+          "tokenType": "ERC1155"
+        }
+      },
+      "title": "",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://assets.jointheppa.com/shuttlepasses/metadata/{id}.json",
+        "gateway": "https://assets.jointheppa.com/shuttlepasses/metadata/{id}.json"
+      },
+      "media": [
+        {
+          "raw": "",
+          "gateway": ""
+        }
+      ],
+      "metadata": {
+        "metadata": [],
+        "attributes": []
+      },
+      "timeLastUpdated": "2022-04-04T09:43:19.014Z",
+      "error": "Token uri responded with a non 200 response code"
+    },
+    {
+      "contract": {
+        "address": "0xeba867502ef59adbd8bc73fbdb531ed9381b5f97"
+      },
+      "id": {
+        "tokenId": "2",
+        "tokenMetadata": {
+          "tokenType": "ERC1155"
+        }
+      },
+      "title": "",
+      "description": "",
+      "tokenUri": {
+        "raw": "https://assets.jointheppa.com/shuttlepasses/metadata/{id}.json",
+        "gateway": "https://assets.jointheppa.com/shuttlepasses/metadata/{id}.json"
+      },
+      "media": [
+        {
+          "raw": "",
+          "gateway": ""
+        }
+      ],
+      "metadata": {
+        "metadata": [],
+        "attributes": []
+      },
+      "timeLastUpdated": "2022-04-04T09:43:18.985Z",
+      "error": "Token uri responded with a non 200 response code"
+    }*/
+  ],
+  "totalCount": 18,
+  "blockHash": "0x31cd4d12009a1c4cfb1f2a5e2be3dcefebb79b2d6c72d0205cb447528efa7a4d"
+};

@@ -1,8 +1,30 @@
-<h2>NFTs</h2>
+<h2>NFTs<span *ngIf="wallet?.nfts?.length as nftsPossessed"> ({{ nftsPossessed }})</span></h2>
 
 <mat-card class="nfts">
-  <mat-icon color="accent">highlight_off</mat-icon>
-  <span class="no-nft--text">
-    Vous ne possédez aucun NFTs
-  </span>
+
+  <ng-container *ngIf="!wallet.nfts?.length; else nftCollection">
+    <mat-icon color="accent">highlight_off</mat-icon>
+    <span class="no-nft--text">
+      Vous ne possédez aucun NFTs
+    </span>
+  </ng-container>
+
+  <ng-template #nftCollection>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
+
+      <mat-card *ngFor="let nft of wallet.nfts | sort:'title'" fxFlex="24%" class="nft" fxLayout="row wrap" fxLayoutAlign="center space-between"
+      (click)="openTokenURI(nft)">
+
+        <img *ngIf="nft?.media?.length" [src]="nft.media[0].gateway"
+             [alt]="nft.metadata?.description" [title]="nft.metadata?.description" fxFlex="80" />
+
+        <div class="nft--title" fxFlex="100">{{ nft.title }}</div>
+
+
+      </mat-card>
+
+    </div>
+  </ng-template>
+
 </mat-card>

@@ -29,6 +29,7 @@ export class TopbarComponent implements OnInit {
     if (address) {
       this.walletService.setAddress(address);
       await this.walletService.loadAssets();
+      await this.walletService.loadNFTS();
     }
   }
 

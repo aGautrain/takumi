@@ -2,3 +2,11 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.trending-up {
+  color: rgb(28,199,96);
+}
+
+.trending-down {
+  color: rgb(255,74,74);
+}

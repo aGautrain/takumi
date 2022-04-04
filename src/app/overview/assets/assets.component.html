@@ -1,11 +1,6 @@
 <h2>Actifs</h2>
 
-<mat-card class="wallet-value">
-  <mat-icon color="primary">account_balance_wallet</mat-icon>
-  <span class="wallet-value--text">
-    Wallet · {{ 21780.34 | number: '1.2-2' }}€
-  </span>
-</mat-card>
+<app-wallet-value></app-wallet-value>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
 
@@ -26,7 +21,7 @@
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantité</th>
     <td mat-cell *matCellDef="let element">
-      {{element.quantity }}
+      {{element.quantity | number: '1.2-9' }}
     </td>
   </ng-container>
 
@@ -34,6 +29,10 @@
     <th mat-header-cell *matHeaderCellDef>Valeur</th>
     <td mat-cell *matCellDef="let element">
       {{element.value | number: '1.2-2' }}€
+      <br/>
+      <small [class.trending-up]="element.percent_change_24h > 0" [class.trending-down]="element.percent_change_24h < 0 ">
+        {{ element.percent_change_24h > 0 ? '+' : '-' }}{{ element.percent_change_24h | number: '1.2-2' }}% ({{element.value_change_24h | number: '1.2-2'}}€)
+      </small>
     </td>
   </ng-container>
 

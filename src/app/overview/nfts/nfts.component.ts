@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {WalletService} from "../../services/wallet.service";
+import {OwnedNFT} from "../../services/explorers/nfts-api.service";
 
 @Component({
   selector: 'app-nfts',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NftsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public wallet: WalletService) { }
 
   ngOnInit(): void {
   }
 
+  openTokenURI(nft: OwnedNFT) {
+    if (nft?.tokenUri?.gateway) window.open(nft.tokenUri.gateway, '__blank');
+  }
 }

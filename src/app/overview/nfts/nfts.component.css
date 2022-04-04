@@ -1,2 +1,13 @@
 mat-card.nfts mat-icon { vertical-align: middle; margin-right: .5rem; }
 mat-card.nfts .no-nft--text { position: relative; top: 2px; }
+
+mat-card.nft {
+  margin-bottom: 1rem;
+  box-shadow: none;
+  border-bottom: solid lightgray 1px;
+  border-radius: 0;
+}
+
+mat-card.nft:hover { cursor: pointer; }
+
+mat-card .nft--title { text-align: center; font-weight: bold; margin-top: .5rem; }

@@ -35,6 +35,7 @@ import {MatTableModule} from "@angular/material/table";
 import { NftsComponent } from './overview/nfts/nfts.component';
 import { AddressDialogComponent } from './address-dialog/address-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {ArraySortPipe} from "./pipes/sort.pipe";
 
 const materialModules = [
   MatProgressSpinnerModule,
@@ -64,7 +65,8 @@ const materialModules = [
     LineChartComponent,
     PriceCardComponent,
     NftsComponent,
-    AddressDialogComponent
+    AddressDialogComponent,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,

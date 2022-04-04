@@ -32,7 +32,7 @@ export class AssetComponent implements OnInit {
 
     this.route.params.subscribe(async (params: any) => {
       this.chartReadyForDisplay = false;
-      this.symbol = params['symbol'];
+      this.symbol = params['symbol']?.toLowerCase();
 
       await this.refreshAssetInfo();
 
