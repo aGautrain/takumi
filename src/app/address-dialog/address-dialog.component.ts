@@ -4,7 +4,7 @@ import {FormControl} from "@angular/forms";
 @Component({
   selector: 'app-address-dialog',
   templateUrl: './address-dialog.component.html',
-  styleUrls: ['./address-dialog.component.css']
+  styleUrls: ['./address-dialog.component.scss']
 })
 export class AddressDialogComponent implements OnInit {
 

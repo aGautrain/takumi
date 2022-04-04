@@ -6,7 +6,7 @@ import {FormControl} from "@angular/forms";
 @Component({
   selector: 'app-gas-card',
   templateUrl: './gas-card.component.html',
-  styleUrls: ['./gas-card.component.css'],
+  styleUrls: ['./gas-card.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GasCardComponent implements OnInit {

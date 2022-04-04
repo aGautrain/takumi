@@ -1,7 +1,7 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button (click)="switchDarkmode()">
+      <mat-icon>{{ darkmodeEnabled ? 'dark_mode' : 'light_mode' }}</mat-icon>
     </button>
     <h2 class="title">Takumi App</h2>
     <span class="example-spacer"></span>

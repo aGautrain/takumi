@@ -8,7 +8,7 @@ interface Speed {
 @Component({
   selector: 'app-gas-prices',
   templateUrl: './gas-prices.component.html',
-  styleUrls: ['./gas-prices.component.css'],
+  styleUrls: ['./gas-prices.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -6,11 +6,12 @@ import {WalletService} from "../services/wallet.service";
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.css']
+  styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
 
   showGasPrices: boolean = false;
+  darkmodeEnabled: boolean = true;
 
 
   @Output() switchMenuStatus: EventEmitter<void> = new EventEmitter<void>();
@@ -31,6 +32,14 @@ export class TopbarComponent implements OnInit {
       await this.walletService.loadAssets();
       await this.walletService.loadNFTS();
     }
+  }
+
+  switchDarkmode() {
+    this.darkmodeEnabled = !this.darkmodeEnabled;
+
+    const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
+    if (this.darkmodeEnabled) body.classList.add('darkMode');
+    else body.classList.remove('darkMode');
   }
 
 }

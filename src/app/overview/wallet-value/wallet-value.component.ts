@@ -4,7 +4,7 @@ import {WalletService} from "../../services/wallet.service";
 @Component({
   selector: 'app-wallet-value',
   templateUrl: './wallet-value.component.html',
-  styleUrls: ['./wallet-value.component.css']
+  styleUrls: ['./wallet-value.component.scss']
 })
 export class WalletValueComponent implements OnInit {
 

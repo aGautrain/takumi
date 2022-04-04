@@ -5,7 +5,7 @@ import {map} from "rxjs/operators";
 @Component({
   selector: 'app-assets',
   templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.css']
+  styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
 
@@ -16,14 +16,21 @@ export class AssetsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.wallet?.assets) this.dataSource = Object.values(this.wallet.assets);
+    if (this.wallet?.assets) this.refreshData();
 
     this.wallet.onRefresh$.pipe(
       map(() => {
-        this.dataSource = Object.values(this.wallet.assets);
+        this.refreshData();
       })
     ).subscribe();
 
+  }
+
+  private refreshData() {
+    this.dataSource = Object.values(this.wallet.assets)
+      .sort((assetA, assetB) => (assetA?.value || 0) > (assetB?.value || 0) ? -1 : 1);
+
+    console.info(this.dataSource);
   }
 
 }

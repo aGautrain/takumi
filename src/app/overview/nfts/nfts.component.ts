@@ -5,7 +5,7 @@ import {OwnedNFT} from "../../services/explorers/nfts-api.service";
 @Component({
   selector: 'app-nfts',
   templateUrl: './nfts.component.html',
-  styleUrls: ['./nfts.component.css']
+  styleUrls: ['./nfts.component.scss']
 })
 export class NftsComponent implements OnInit {
 
