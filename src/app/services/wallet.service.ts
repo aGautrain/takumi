@@ -5,6 +5,8 @@ import {Observable, Subject} from "rxjs";
 import {NftsApiService, OwnedNFT} from "./explorers/nfts-api.service";
 import {nftsMocked} from "./cryptocurrencies.mock";
 import { AvaxApiService } from './explorers/avax-api.service';
+import { FantomApiService } from './explorers/fantom-api.service';
+import { BinanceApiService } from './explorers/binance-api.service';
 
 export enum SupportedSymbol {
   Avalanche = 'AVAX',
@@ -55,7 +57,10 @@ export class WalletService {
   constructor(private coinmarketApi: CoinmarketApiService,
               private etherscanApi: EtherscanApiService,
               private avaxApi: AvaxApiService,
-              private nftsApi: NftsApiService) { }
+              private nftsApi: NftsApiService,
+              private fantomApi: FantomApiService,
+              private BscscanApi: BinanceApiService,  
+              ) { }
 
   private convertWeiToEth(wei: number): number {
     return wei / 1000000000000000000;
@@ -63,6 +68,14 @@ export class WalletService {
 
   private convertWavaxToAvax(wavax: number): number {
     return wavax / 1000000000000000000;
+  }
+
+  private convertWftmToFantom(wftm: number): number {
+    return wftm / 1000000000000000000;
+  }
+
+  private convertWbnbToBnb(wbnb: number): number {
+    return wbnb / 1000000000000000000;
   }
 
   getAddress(): string {
@@ -86,6 +99,15 @@ export class WalletService {
         quantity: this.convertWavaxToAvax(wavax)
       };
 
+      const wftm = await this.fantomApi.getBalance(this.address);
+      this.assets[SupportedSymbol.Fantom] = {
+        quantity: this.convertWftmToFantom(wftm)
+      };
+
+      const wbnb = await this.BscscanApi.getBalance(this.address);
+      this.assets[SupportedSymbol.Binance] = {
+        quantity: this.convertWbnbToBnb(wbnb)
+      };
 
       await this.loadAssetsInfos();
     }
