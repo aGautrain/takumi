@@ -7,6 +7,7 @@ import {nftsMocked} from "./cryptocurrencies.mock";
 import { AvaxApiService } from './explorers/avax-api.service';
 import { FantomApiService } from './explorers/fantom-api.service';
 import { BinanceApiService } from './explorers/binance-api.service';
+import { PolygonApiService } from './explorers/polygon-api.service';
 
 export enum SupportedSymbol {
   Avalanche = 'AVAX',
@@ -59,7 +60,8 @@ export class WalletService {
               private avaxApi: AvaxApiService,
               private nftsApi: NftsApiService,
               private fantomApi: FantomApiService,
-              private BscscanApi: BinanceApiService,  
+              private BscscanApi: BinanceApiService,
+              private PolygonApi: PolygonApiService,  
               ) { }
 
   private convertWeiToEth(wei: number): number {
@@ -76,6 +78,10 @@ export class WalletService {
 
   private convertWbnbToBnb(wbnb: number): number {
     return wbnb / 1000000000000000000;
+  
+  }
+  private convertWmaticToMatic(wmatic: number): number {
+    return wmatic / 1000000000000000000;
   }
 
   getAddress(): string {
@@ -107,6 +113,11 @@ export class WalletService {
       const wbnb = await this.BscscanApi.getBalance(this.address);
       this.assets[SupportedSymbol.Binance] = {
         quantity: this.convertWbnbToBnb(wbnb)
+      };
+
+      const wmatic = await this.PolygonApi.getBalance(this.address);
+      this.assets[SupportedSymbol.Polygon] = {
+        quantity: this.convertWmaticToMatic(wmatic)
       };
 
       await this.loadAssetsInfos();
