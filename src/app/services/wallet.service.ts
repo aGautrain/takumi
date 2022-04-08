@@ -44,7 +44,7 @@ export class WalletService {
 
 
   assets: Record<string, Partial<Asset>> = {};
-  nfts: OwnedNFT[] = nftsMocked.ownedNfts;
+  nfts: OwnedNFT[] = [];
 
   private onRefresh$$: Subject<void> = new Subject<void>();
   onRefresh$: Observable<void> = this.onRefresh$$.asObservable();
@@ -61,7 +61,7 @@ export class WalletService {
               private nftsApi: NftsApiService,
               private fantomApi: FantomApiService,
               private BscscanApi: BinanceApiService,
-              private PolygonApi: PolygonApiService,  
+              private PolygonApi: PolygonApiService, 
               ) { }
 
   private convertWeiToEth(wei: number): number {

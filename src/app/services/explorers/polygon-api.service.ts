@@ -5,9 +5,16 @@ import { environment } from 'src/environments/environment';
 
 type PolygonBalanceResult = EtherscanBalanceResult
 
+export interface PolygonGasResult {
+  status: string;
+  message: string;
+  result: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class PolygonApiService {
   private API_KEY = environment.PolygonApiKey;
   private API_ENDPOINT = 'https://api.polygonscan.com/api';
@@ -20,5 +27,13 @@ export class PolygonApiService {
       .toPromise().then((res: PolygonBalanceResult | undefined) => {
         return res?.result !== undefined ? parseInt(res.result, 10) : 0
       });
+  }
+
+  getGas(): Promise<number> {
+    return this.http.get<PolygonGasResult>(
+      this.API_ENDPOINT + '?module=gastracker&action=gasoracle' + '&apikey=' + this.API_KEY)
+    .toPromise().then((res: PolygonGasResult | undefined) => {
+      return res?.result !== undefined ? parseInt(res.result, 10) : 0
+    });
   }
 }

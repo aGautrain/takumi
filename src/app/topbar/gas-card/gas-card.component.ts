@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CoinmarketApiService, CryptocurrencyInfo} from 'src/app/services/coinmarket-api.service';
 import {FormControl} from "@angular/forms";
+import { PolygonApiService } from 'src/app/services/explorers/polygon-api.service';
+
 
 
 @Component({
@@ -16,9 +18,12 @@ export class GasCardComponent implements OnInit {
 
   cryptos: CryptocurrencyInfo[] = [];
 
-  constructor(private coinmarketApi: CoinmarketApiService) { }
+  constructor(private coinmarketApi: CoinmarketApiService,
+              private PolygonApi: PolygonApiService,) { }
 
   async ngOnInit() {
+
+    this.PolygonApi.getGas();
 
     this.selectedCryptoFormControl.valueChanges.subscribe((id) => {
       this.selectedCrypto = this.cryptos.find(crypto => crypto.id === id);
@@ -35,6 +40,8 @@ export class GasCardComponent implements OnInit {
         name: crypto.name.charAt(0).toUpperCase() + crypto.name.slice(1).toLowerCase()
       }));
     }
+    
+    
   }
 
 }

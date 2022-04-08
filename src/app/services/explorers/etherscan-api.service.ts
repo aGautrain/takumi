@@ -9,6 +9,12 @@ export interface EtherscanBalanceResult {
   result: string;
 }
 
+export interface EtherscanGasResult {
+  status: string;
+  message: string;
+  result: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,6 +31,14 @@ export class EtherscanApiService {
       `${this.API_ENDPOINT}?module=account&action=balance&address=${address}&tag=latest&apikey=${this.API_KEY}`
     ).toPromise()
       .then((res: EtherscanBalanceResult | undefined) => {
+      return res?.result !== undefined ? parseInt(res.result, 10) : 0
+    });
+  }
+
+  getGas(): Promise<number> {
+    return this.http.get<EtherscanGasResult>(
+      this.API_ENDPOINT + '?module=gastracker&action=gasoracle' + '&apikey=' + this.API_KEY)
+    .toPromise().then((res: EtherscanGasResult | undefined) => {
       return res?.result !== undefined ? parseInt(res.result, 10) : 0
     });
   }
