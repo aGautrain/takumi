@@ -3,7 +3,6 @@ import {EtherscanApiService} from "./explorers/etherscan-api.service";
 import {CoinmarketApiService} from "./coinmarket-api.service";
 import {Observable, Subject} from "rxjs";
 import {NftsApiService, OwnedNFT} from "./explorers/nfts-api.service";
-import {nftsMocked} from "./cryptocurrencies.mock";
 import { AvaxApiService } from './explorers/avax-api.service';
 import { FantomApiService } from './explorers/fantom-api.service';
 import { BinanceApiService } from './explorers/binance-api.service';
@@ -30,6 +29,9 @@ export interface Asset {
   value: number;
   percent_change_24h: number;
   value_change_24h: number;
+  percent_change_7d: number;
+  percent_change_30d: number;
+  percent_change_90d: number;
 
   origin?: Blockchain;
 }
@@ -61,7 +63,7 @@ export class WalletService {
               private nftsApi: NftsApiService,
               private fantomApi: FantomApiService,
               private BscscanApi: BinanceApiService,
-              private PolygonApi: PolygonApiService, 
+              private PolygonApi: PolygonApiService,
               ) { }
 
   private convertWeiToEth(wei: number): number {
@@ -78,7 +80,7 @@ export class WalletService {
 
   private convertWbnbToBnb(wbnb: number): number {
     return wbnb / 1000000000000000000;
-  
+
   }
   private convertWmaticToMatic(wmatic: number): number {
     return wmatic / 1000000000000000000;
@@ -151,7 +153,10 @@ export class WalletService {
           ...this.assets[symbol],
           price: cryptoMarketInfos.price,
           value: quantity * cryptoMarketInfos.price,
-          percent_change_24h: cryptoMarketInfos.percent_change_24h
+          percent_change_24h: cryptoMarketInfos.percent_change_24h,
+          percent_change_7d: cryptoMarketInfos.percent_change_7d,
+          percent_change_30d: cryptoMarketInfos.percent_change_30d,
+          percent_change_90d: cryptoMarketInfos.percent_change_90d
         };
 
         this.assets[symbol].value_change_24h = ((this.assets[symbol].value || 0) * cryptoMarketInfos.percent_change_24h) / 100

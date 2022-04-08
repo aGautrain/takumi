@@ -1,8 +1,3 @@
-app-line-chart {
-    margin: auto;
-}
-
-
 app-price-card {
     width: 100%;
 }
@@ -30,4 +25,9 @@ app-price-card {
 
 .loading mat-spinner {
     display: block; margin: 5rem auto;
+}
+
+
+app-line-chart, app-price-card, .card-description {
+  margin-bottom: 2rem;
 }

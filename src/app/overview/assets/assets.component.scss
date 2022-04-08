@@ -1,8 +1,17 @@
-table {
-  width: 100%;
+mat-card.assets {
+  mat-icon {
+    vertical-align: middle;
+    margin-right: .5rem;
+  }
+
+  .no-assets--text {
+    position: relative;
+    top: 2px;
+  }
 }
 
-table .asset-logo { width: 1.2rem; vertical-align: middle; }
-
-table .mat-row:hover { background-color: rgba(200, 200, 200, .2); cursor: pointer; }
-
+table {
+  width: 100%;
+  .asset-logo { width: 1.2rem; vertical-align: text-bottom; margin-right: .3rem; }
+  .mat-row:hover { background-color: rgba(200, 200, 200, .2); cursor: pointer; }
+}

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {nftsMocked} from "../cryptocurrencies.mock";
-import {map} from "rxjs/operators";
 
 export interface NFTCollectionResult {
   ownedNfts: OwnedNFT[];
@@ -44,10 +42,6 @@ export class NftsApiService {
 
   // https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/getnfts
   getNFTS(address: string): Promise<NFTCollectionResult> {
-
-    // TODO remove mock
-    return new Promise((resolve) => resolve(nftsMocked));
-
     return this.http.get<NFTCollectionResult>(
       `${this.API_ENDPOINT}/v2/demo/getNFTs?owner=${address}`
     ).toPromise() as Promise<NFTCollectionResult>;

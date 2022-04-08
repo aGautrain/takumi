@@ -6,8 +6,11 @@ mat-card.nft {
   box-shadow: none;
   border-bottom: solid lightgray 1px;
   border-radius: 0;
-}
 
-mat-card.nft:hover { cursor: pointer; }
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(110,110,110, .1);
+  }
+}
 
 mat-card .nft--title { text-align: center; font-weight: bold; margin-top: .5rem; }

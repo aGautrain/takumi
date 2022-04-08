@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddressDialogComponent} from "../address-dialog/address-dialog.component";
 import {WalletService} from "../services/wallet.service";
@@ -10,6 +10,9 @@ import {WalletService} from "../services/wallet.service";
 })
 export class TopbarComponent implements OnInit {
 
+  @Input() mobile: boolean = false;
+  @Output() toggleMenu: EventEmitter<void> = new EventEmitter<void>();
+
   showGasPrices: boolean = false;
   darkmodeEnabled: boolean = true;
 
@@ -18,7 +21,8 @@ export class TopbarComponent implements OnInit {
 
   constructor(private _dialog: MatDialog, public walletService: WalletService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    if (!this.walletService?.getAddress()) await this.openAddressDialog();
   }
 
   async openAddressDialog() {

@@ -10,7 +10,6 @@ import { AssetsComponent } from './overview/assets/assets.component';
 import { WalletValueComponent } from './overview/wallet-value/wallet-value.component';
 import { AssetComponent } from './asset/asset.component';
 import { MarketValueComponent } from './asset/market-value/market-value.component';
-import { StatsComponent } from './asset/stats/stats.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { MenuComponent } from './menu/menu.component'
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +35,8 @@ import { NftsComponent } from './overview/nfts/nfts.component';
 import { AddressDialogComponent } from './address-dialog/address-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {ArraySortPipe} from "./pipes/sort.pipe";
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MetadataDialogComponent } from './overview/nfts/metadata-dialog/metadata-dialog.component';
 
 const materialModules = [
   MatProgressSpinnerModule,
@@ -44,7 +45,8 @@ const materialModules = [
   MatIconModule,
   FlexLayoutModule,
   MatListModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatTooltipModule
 ];
 
 
@@ -57,7 +59,6 @@ const materialModules = [
     WalletValueComponent,
     AssetComponent,
     MarketValueComponent,
-    StatsComponent,
     TopbarComponent,
     MenuComponent,
     GasCardComponent,
@@ -66,7 +67,8 @@ const materialModules = [
     PriceCardComponent,
     NftsComponent,
     AddressDialogComponent,
-    ArraySortPipe
+    ArraySortPipe,
+    MetadataDialogComponent
   ],
   imports: [
     BrowserModule,

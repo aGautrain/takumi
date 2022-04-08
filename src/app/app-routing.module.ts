@@ -5,7 +5,8 @@ import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   { path: 'asset/:symbol', component: AssetComponent },
-  { path: 'overview', component: OverviewComponent }
+  { path: 'overview', component: OverviewComponent },
+  { path: '**', redirectTo: 'overview' }
 ];
 
 @NgModule({

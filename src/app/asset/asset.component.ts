@@ -39,7 +39,7 @@ export class AssetComponent implements OnInit {
       this.chartData = await this.coingeckoApi.getCryptocurrencyChart(this.symbol);
       this.chartTitle = `${this.symbol} (€)`;
 
-      this.chartLabels = this.chartData.prices.map(([date, _]) => new Date(date).toDateString());
+      this.chartLabels = this.chartData.prices.map(([date, _]) => new Date(date).toLocaleDateString('fr'));
       this.chartPoints = this.chartData.prices.map(([_, price]) => price);
       this.resetChartFocus();
       this.chartReadyForDisplay = !!(this.chartLabels?.length && this.chartPoints?.length);

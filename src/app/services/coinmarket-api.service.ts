@@ -2,8 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import {cryptocurrenciesMarketDataMocked} from "./cryptocurrencies.mock";
-// import { cryptocurrenciesMocked } from "./cryptocurrencies.mock";
 
 
 export interface CryptocurrencyInfo {
@@ -47,8 +45,6 @@ export class CoinmarketApiService {
 
   getCryptosInfos(symbols: string[] = ['AVAX', 'ETH', 'BNB', 'FTM', 'MATIC']): Promise<Record<string, CryptocurrencyInfo>> {
 
-    // return new Promise((res) => res(cryptocurrenciesMocked));
-
     return this.http.get<{ data: Record<string, CryptocurrencyInfo[]> }>(this.API_ENDPOINT + '/v2/cryptocurrency/info', {
       params: new HttpParams()
         .set('symbol', symbols.join(','))
@@ -65,15 +61,6 @@ export class CoinmarketApiService {
   }
 
   getCryptosLatestMarketData(symbols: string[] = ['AVAX', 'ETH', 'BNB', 'FTM', 'MATIC']): Promise<Record<string, CryptocurrencyMarketInfo>> {
-
-    /*return (new Promise((resolve) => resolve(cryptocurrenciesMarketDataMocked)) as Promise<Record<string, { quote: { EUR: CryptocurrencyMarketInfo } }>>)
-      .then((res) => {
-        return Object.entries(res).reduce((responseFormatted: Record<string, CryptocurrencyMarketInfo>, [symbol, marketData]) => {
-          if (symbol && marketData) responseFormatted[symbol] = marketData['quote']['EUR'];
-          return responseFormatted;
-        }, {});
-      });*/
-
 
     return this.http.get<{ data: Record<string, { quote: { EUR: CryptocurrencyMarketInfo } }> }>(this.API_ENDPOINT + '/v1/cryptocurrency/quotes/latest', {
       params: new HttpParams()

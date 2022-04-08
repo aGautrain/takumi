@@ -22,7 +22,6 @@ export class CoinGeckoAPIService {
 
     const coingeckoId = this.symbol2id.getCoinGeckoId(symbol);
 
-    //return new Promise((res) => res(etherChartMocked));
     return this.http.get<CryptocurrencyChartData>(`${this.API_ENDPOINT}/coins/${coingeckoId}/market_chart`, {
       params: new HttpParams()
         .set('vs_currency', 'eur')

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {WalletService} from "../../services/wallet.service";
 import {OwnedNFT} from "../../services/explorers/nfts-api.service";
+import {MatDialog} from "@angular/material/dialog";
+import {MetadataDialogComponent} from "./metadata-dialog/metadata-dialog.component";
 
 @Component({
   selector: 'app-nfts',
@@ -9,12 +11,15 @@ import {OwnedNFT} from "../../services/explorers/nfts-api.service";
 })
 export class NftsComponent implements OnInit {
 
-  constructor(public wallet: WalletService) { }
+  constructor(public wallet: WalletService, private _dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  openTokenURI(nft: OwnedNFT) {
-    if (nft?.tokenUri?.gateway) window.open(nft.tokenUri.gateway, '__blank');
+  openNFTMetadataDialog(nft: OwnedNFT) {
+    this._dialog.open(MetadataDialogComponent, {
+      minWidth: '40vw',
+      data: { nft }
+    });
   }
 }

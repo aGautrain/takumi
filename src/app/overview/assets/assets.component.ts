@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Asset, WalletService} from "../../services/wallet.service";
 import {map} from "rxjs/operators";
 
@@ -9,10 +9,10 @@ import {map} from "rxjs/operators";
 })
 export class AssetsComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'price', 'quantity', 'value'];
+  displayedColumns: string[] = ['name', 'price', 'quantity', 'value_24h'];
   dataSource: Array<Partial<Asset>> = [];
 
-  constructor(private wallet: WalletService) { }
+  constructor(public wallet: WalletService) {}
 
   ngOnInit(): void {
 
@@ -29,8 +29,12 @@ export class AssetsComponent implements OnInit {
   private refreshData() {
     this.dataSource = Object.values(this.wallet.assets)
       .sort((assetA, assetB) => (assetA?.value || 0) > (assetB?.value || 0) ? -1 : 1);
+  }
 
-    console.info(this.dataSource);
+  getPricesTooltip(asset: Asset): string {
+    return `${asset.percent_change_7d > 0 ? '+' : ''}${asset.percent_change_7d.toFixed(0)}% 7j
+    / ${asset.percent_change_30d > 0 ? '+' : ''}${asset.percent_change_30d.toFixed(0)}% 30j
+    / ${asset.percent_change_90d > 0 ? '+' : ''}${asset.percent_change_90d.toFixed(0)}% 90j`;
   }
 
 }

@@ -1,20 +1,25 @@
 <mat-toolbar>
   <mat-toolbar-row>
+    <button mat-icon-button *ngIf="mobile" (click)="toggleMenu.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <button mat-icon-button (click)="switchDarkmode()">
       <mat-icon>{{ darkmodeEnabled ? 'dark_mode' : 'light_mode' }}</mat-icon>
     </button>
-    <h2 class="title">Takumi App</h2>
+    <h2 *ngIf="!mobile" class="title">Takumi App</h2>
     <span class="example-spacer"></span>
 
     <button mat-button color="primary" (click)="openAddressDialog()">
       <mat-icon>search</mat-icon>
-      <ng-container *ngIf="walletService.getAddress() as address; else login">
-        Connecté en tant que&nbsp;<span class="address">{{ address }}</span>
-      </ng-container>
+      <ng-container *ngIf="!mobile">
+        <ng-container *ngIf="walletService.getAddress() as address; else login">
+          Connecté en tant que&nbsp;<span class="address">{{ address }}</span>
+        </ng-container>
 
-      <ng-template #login>
-        Cliquez-ici pour vous connecter
-      </ng-template>
+        <ng-template #login>
+          Cliquez-ici pour vous connecter
+        </ng-template>
+      </ng-container>
     </button>
 
     <button mat-icon-button color="primary" (click)="showGasPrices = !showGasPrices" cdkOverlayOrigin
@@ -25,10 +30,6 @@
     <button mat-button color="primary">
       <mat-icon>account_balance</mat-icon>
       &nbsp;EURO
-    </button>
-
-    <button mat-icon-button color="primary">
-      <mat-icon>share</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>

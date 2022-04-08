@@ -1,6 +1,5 @@
 import { CryptocurrencyChartData } from "./coingecko-api.service";
 import {CryptocurrencyInfo, CryptocurrencyMarketInfo} from "./coinmarket-api.service";
-import {NFTCollectionResult} from "./explorers/nfts-api.service";
 
 export const etherChartMocked: CryptocurrencyChartData = {
   "prices": [
@@ -431,7 +430,6 @@ export const cryptocurrenciesMocked: Record<string, Required<CryptocurrencyInfo>
   }
 }
 
-
 export const cryptocurrenciesMarketDataMocked: Record<string, { quote: { EUR: CryptocurrencyMarketInfo } }> = {
   "1027": {
     /*"id": 1027,
@@ -601,14 +599,14 @@ export const nftsMocked: any = {
       },
       "media": [
         {
-          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491",
-          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491"
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6491",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6491"
         }
       ],
       "metadata": {
         "name": "Reactor #6491",
         "description": "",
-        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6491",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6491",
         "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6491",
         "attributes": [
           {
@@ -662,14 +660,14 @@ export const nftsMocked: any = {
       },
       "media": [
         {
-          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497",
-          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497"
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6497",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6497"
         }
       ],
       "metadata": {
         "name": "Reactor #6497",
         "description": "",
-        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6497",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6497",
         "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6497",
         "attributes": [
           {
@@ -819,14 +817,14 @@ export const nftsMocked: any = {
       },
       "media": [
         {
-          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490",
-          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490"
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6490",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6490"
         }
       ],
       "metadata": {
         "name": "Reactor #6490",
         "description": "",
-        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6490",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6490",
         "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6490",
         "attributes": [
           {
@@ -917,14 +915,14 @@ export const nftsMocked: any = {
       },
       "media": [
         {
-          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494",
-          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494"
+          "raw": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6494",
+          "gateway": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6494"
         }
       ],
       "metadata": {
         "name": "Reactor #6494",
         "description": "",
-        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails/6494",
+        "image": "https://live---metadata-erhfxefu3a-uc.a.run.app/thumbnails_cars/6494",
         "animation_url": "https://live---metadata-erhfxefu3a-uc.a.run.app/video/6494",
         "attributes": [
           {

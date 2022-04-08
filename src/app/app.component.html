@@ -1,7 +1,7 @@
-<app-topbar></app-topbar>
+<app-topbar [mobile]="mobileQuery.matches" (toggleMenu)="snav.toggle()"></app-topbar>
 
 <mat-drawer-container>
-    <mat-drawer mode="side" opened>
+    <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened>
 
         <mat-nav-list role="list">
             <a mat-list-item routerLink="/overview">Vue d'ensemble</a>
