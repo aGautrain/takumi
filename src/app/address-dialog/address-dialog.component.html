@@ -4,10 +4,20 @@
 <mat-dialog-content class="mat-typography">
   <mat-form-field fxFlex class="search-field" appearance="outline">
     <mat-label>Adresse</mat-label>
-    <input cdkFocusInitial matInput [formControl]="addressFormControl" type="text" autocomplete="off" placeholder="ex: 0xd5b43eb2ef37...">
+    <input
+      cdkFocusInitial
+      matInput
+      [formControl]="addressFormControl"
+      type="text"
+      autocomplete="off"
+      placeholder="ex: 0xd5b43eb2ef37..."
+    />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Annuler</button>
-  <button mat-button [mat-dialog-close]="addressFormControl?.value">Rechercher les tokens</button> <!-- à la fermeture, on renvoie la valeur du champ adresse -->
+  <button mat-button [mat-dialog-close]="addressFormControl?.value">
+    Rechercher les tokens
+  </button>
+  <!-- à la fermeture, on renvoie la valeur du champ adresse -->
 </mat-dialog-actions>

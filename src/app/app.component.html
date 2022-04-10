@@ -1,22 +1,22 @@
-<app-topbar [mobile]="mobileQuery.matches" (toggleMenu)="snav.toggle()"></app-topbar>
-
+<app-topbar
+  [mobile]="mobileQuery.matches"
+  (toggleMenu)="snav.toggle()"
+></app-topbar>
 
 <!-- Sidenav responsive (le mode change si on est sur mobile) -->
 <!-- https://material.angular.io/components/sidenav/examples#sidenav-responsive -->
 <mat-drawer-container>
-    <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened>
-
-        <mat-nav-list role="list">
-            <a mat-list-item routerLink="/overview">Vue d'ensemble</a>
-            <a mat-list-item routerLink="/asset/eth">Ethereum</a>
-            <a mat-list-item routerLink="/asset/avax">Avalanche</a>
-            <a mat-list-item routerLink="/asset/bnb">BNB</a>
-            <a mat-list-item routerLink="/asset/ftm">Fantom</a>
-            <a mat-list-item routerLink="/asset/matic">Polygon</a>
-        </mat-nav-list>
-
-    </mat-drawer>
-    <mat-drawer-content>
-        <router-outlet></router-outlet>
-    </mat-drawer-content>
+  <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened>
+    <mat-nav-list role="list">
+      <a mat-list-item routerLink="/overview">Vue d'ensemble</a>
+      <a mat-list-item routerLink="/asset/eth">Ethereum</a>
+      <a mat-list-item routerLink="/asset/avax">Avalanche</a>
+      <a mat-list-item routerLink="/asset/bnb">BNB</a>
+      <a mat-list-item routerLink="/asset/ftm">Fantom</a>
+      <a mat-list-item routerLink="/asset/matic">Polygon</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
 </mat-drawer-container>

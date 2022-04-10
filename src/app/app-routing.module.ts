@@ -6,11 +6,11 @@ import { OverviewComponent } from './overview/overview.component';
 const routes: Routes = [
   { path: 'asset/:symbol', component: AssetComponent },
   { path: 'overview', component: OverviewComponent },
-  { path: '**', redirectTo: 'overview' }
+  { path: '**', redirectTo: 'overview' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

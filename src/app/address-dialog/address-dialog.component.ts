@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from "@angular/forms";
+import { FormControl } from '@angular/forms';
 
 /*
   Composant qui affiche un formulaire de connexion,
@@ -12,16 +12,13 @@ import {FormControl} from "@angular/forms";
 @Component({
   selector: 'app-address-dialog',
   templateUrl: './address-dialog.component.html',
-  styleUrls: ['./address-dialog.component.scss']
+  styleUrls: ['./address-dialog.component.scss'],
 })
 export class AddressDialogComponent implements OnInit {
-
   // champ pour renseigner l'adresse
   addressFormControl: FormControl = new FormControl('');
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

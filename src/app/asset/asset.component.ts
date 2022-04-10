@@ -1,8 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {CoinGeckoAPIService, CryptocurrencyChartData} from '../services/coingecko-api.service';
-import {CoinmarketApiService, CryptocurrencyInfo} from '../services/coinmarket-api.service';
-import {SupportedSymbol} from "../services/wallet.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {
+  CoinGeckoAPIService,
+  CryptocurrencyChartData,
+} from '../services/coingecko-api.service';
+import {
+  CoinmarketApiService,
+  CryptocurrencyInfo,
+} from '../services/coinmarket-api.service';
+import { SupportedSymbol } from '../services/wallet.service';
 
 /*
     Composant qui correspond à la page /asset, prend en paramètre une crypto, par exemple /asset/eth
@@ -13,10 +19,9 @@ import {SupportedSymbol} from "../services/wallet.service";
 @Component({
   selector: 'app-asset',
   templateUrl: './asset.component.html',
-  styleUrls: ['./asset.component.scss']
+  styleUrls: ['./asset.component.scss'],
 })
 export class AssetComponent implements OnInit {
-
   // on utilise des symboles dans l'application
   symbol: SupportedSymbol = SupportedSymbol.Ethereum;
   assetInfos: CryptocurrencyInfo | undefined = undefined;
@@ -33,10 +38,10 @@ export class AssetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private coinmarketApi: CoinmarketApiService,
-    private coingeckoApi: CoinGeckoAPIService) { }
+    private coingeckoApi: CoinGeckoAPIService
+  ) {}
 
   ngOnInit(): void {
-
     // à chaque fois qu'on change de crypto, par exemple /asset/eth, /asset/avax, etc.
     this.route.params.subscribe(async (params: any) => {
       // on cache le graphique en attendant d'avoir les infos
@@ -46,15 +51,21 @@ export class AssetComponent implements OnInit {
       await this.refreshAssetInfo();
 
       // on les attribue au graphique
-      this.chartData = await this.coingeckoApi.getCryptocurrencyChart(this.symbol);
+      this.chartData = await this.coingeckoApi.getCryptocurrencyChart(
+        this.symbol
+      );
       this.chartTitle = `${this.symbol} (€)`;
 
-      this.chartLabels = this.chartData.prices.map(([date, _]) => new Date(date).toLocaleDateString('fr'));
+      this.chartLabels = this.chartData.prices.map(([date, _]) =>
+        new Date(date).toLocaleDateString('fr')
+      );
       this.chartPoints = this.chartData.prices.map(([_, price]) => price);
       this.resetChartFocus();
 
       // on indique que le graphique est prêt à être affiché
-      this.chartReadyForDisplay = !!(this.chartLabels?.length && this.chartPoints?.length);
+      this.chartReadyForDisplay = !!(
+        this.chartLabels?.length && this.chartPoints?.length
+      );
     });
   }
 
@@ -72,7 +83,10 @@ export class AssetComponent implements OnInit {
   resetChartFocus() {
     if (this.chartLabels?.length && this.chartPoints?.length) {
       // affichage du dernier prix (correspond au dernier point du graphique)
-      this.chartFocus = [this.chartLabels[this.chartLabels.length - 1], this.chartPoints[this.chartPoints.length - 1]];
+      this.chartFocus = [
+        this.chartLabels[this.chartLabels.length - 1],
+        this.chartPoints[this.chartPoints.length - 1],
+      ];
     }
   }
 
@@ -80,5 +94,4 @@ export class AssetComponent implements OnInit {
     // quand on survole le graphique, on met à jour le prix affiché pour le PriceCardComponent
     this.chartFocus = change;
   }
-
 }

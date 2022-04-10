@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
-import {MediaMatcher} from "@angular/cdk/layout";
-import {MatDrawer} from "@angular/material/sidenav";
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatDrawer } from '@angular/material/sidenav';
 
 /*
     Composant principal de l'application
@@ -15,7 +15,6 @@ import {MatDrawer} from "@angular/material/sidenav";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   @ViewChild('snav', { static: true }) snav: MatDrawer | undefined = undefined;
 
   mobileQuery: MediaQueryList;

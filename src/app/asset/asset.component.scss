@@ -1,5 +1,5 @@
 app-price-card {
-    width: 100%;
+  width: 100%;
 }
 
 .title {
@@ -7,26 +7,29 @@ app-price-card {
 
   img {
     vertical-align: middle;
-    margin-right: .2rem;
+    margin-right: 0.2rem;
     width: 2rem;
     height: auto;
   }
 }
 
 .title-symbol {
-    font-size: large;
+  font-size: large;
 }
 
 .card-description {
-    text-align: justify;
-    line-height: 1.5;
-    height: fit-content;
+  text-align: justify;
+  line-height: 1.5;
+  height: fit-content;
 }
 
 .loading mat-spinner {
-    display: block; margin: 5rem auto;
+  display: block;
+  margin: 5rem auto;
 }
 
-app-line-chart, app-price-card, .card-description {
+app-line-chart,
+app-price-card,
+.card-description {
   margin-bottom: 2rem;
 }

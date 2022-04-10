@@ -1,27 +1,33 @@
 <mat-list class="gas-list" role="list">
   <mat-list-item role="listitem">
-    <div class="gas-list-row" fxLayout="row" fxLayoutAlign="space-between center">
-      <span fxFlex>
-        <mat-icon>bolt</mat-icon> Rapide
-      </span>
+    <div
+      class="gas-list-row"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <span fxFlex> <mat-icon>bolt</mat-icon> Rapide </span>
       <span fxFlex="nogrow" class="gas-price">{{ fastGas }}gwei</span>
     </div>
   </mat-list-item>
   <mat-divider></mat-divider>
   <mat-list-item role="listitem">
-    <div class="gas-list-row" fxLayout="row" fxLayoutAlign="space-between center">
-      <span fxFlex>
-        <mat-icon>timer</mat-icon> Moyen
-      </span>
+    <div
+      class="gas-list-row"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <span fxFlex> <mat-icon>timer</mat-icon> Moyen </span>
       <span fxFlex="nogrow" class="gas-price">{{ averageGas }}gwei</span>
     </div>
   </mat-list-item>
   <mat-divider></mat-divider>
   <mat-list-item role="listitem">
-    <div class="gas-list-row" fxLayout="row" fxLayoutAlign="space-between center">
-      <span fxFlex>
-        <mat-icon>hourglass_empty</mat-icon> Lent
-      </span>
+    <div
+      class="gas-list-row"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <span fxFlex> <mat-icon>hourglass_empty</mat-icon> Lent </span>
       <span fxFlex="nogrow" class="gas-price">{{ slowGas }}gwei</span>
     </div>
   </mat-list-item>

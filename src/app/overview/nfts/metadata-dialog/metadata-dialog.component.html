@@ -2,20 +2,27 @@
 
 <h2 mat-dialog-title>{{ data?.nft?.title }}</h2>
 <mat-dialog-content class="mat-typography">
-
-
   <div fxLayout="row wrap" fxLayoutAlign="center start">
-  <img *ngIf="data?.nft?.media?.length" [src]="data.nft.media[0].gateway" fxFlex="80" [fxFlex.gt-md]="70"
-       [alt]="data.nft.metadata?.description" [title]="data.nft.metadata?.description" class="nft-preview" />
+    <img
+      *ngIf="data?.nft?.media?.length"
+      [src]="data.nft.media[0].gateway"
+      fxFlex="80"
+      [fxFlex.gt-md]="70"
+      [alt]="data.nft.metadata?.description"
+      [title]="data.nft.metadata?.description"
+      class="nft-preview"
+    />
 
-  <mat-list role="list" fxFlex="100" [fxFlex.gt-md]="30">
-    <mat-list-item *ngFor="let attribute of data?.nft?.metadata?.attributes" role="listitem">
-      <b class="nft-trait">{{ attribute.trait_type }}</b>&nbsp;{{ attribute.value }}
-    </mat-list-item>
-  </mat-list>
-
+    <mat-list role="list" fxFlex="100" [fxFlex.gt-md]="30">
+      <mat-list-item
+        *ngFor="let attribute of data?.nft?.metadata?.attributes"
+        role="listitem"
+      >
+        <b class="nft-trait">{{ attribute.trait_type }}</b
+        >&nbsp;{{ attribute.value }}
+      </mat-list-item>
+    </mat-list>
   </div>
-
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Fermer</button>

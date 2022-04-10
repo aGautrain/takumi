@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {AddressDialogComponent} from "../address-dialog/address-dialog.component";
-import {WalletService} from "../services/wallet.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddressDialogComponent } from '../address-dialog/address-dialog.component';
+import { WalletService } from '../services/wallet.service';
 
 /*
     Barre du haut avec différents boutons cliquables (darkmode, menu responsive, prix du gas, adresse)
@@ -10,20 +10,21 @@ import {WalletService} from "../services/wallet.service";
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  styleUrls: ['./topbar.component.scss']
+  styleUrls: ['./topbar.component.scss'],
 })
 export class TopbarComponent implements OnInit {
-
   @Input() mobile: boolean = false;
   @Output() toggleMenu: EventEmitter<void> = new EventEmitter<void>();
 
   showGasPrices: boolean = false;
   darkmodeEnabled: boolean = true;
 
-
   @Output() switchMenuStatus: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private _dialog: MatDialog, public walletService: WalletService) { }
+  constructor(
+    private _dialog: MatDialog,
+    public walletService: WalletService
+  ) {}
 
   async ngOnInit() {
     if (!this.walletService?.getAddress()) await this.openAddressDialog();
@@ -31,7 +32,7 @@ export class TopbarComponent implements OnInit {
 
   async openAddressDialog() {
     const dialogRef = this._dialog.open(AddressDialogComponent, {
-      minWidth: '40vw'
+      minWidth: '40vw',
     });
 
     const address = await dialogRef.afterClosed().toPromise();
@@ -45,9 +46,10 @@ export class TopbarComponent implements OnInit {
   switchDarkmode() {
     this.darkmodeEnabled = !this.darkmodeEnabled;
 
-    const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
+    const body: HTMLBodyElement = document.querySelector(
+      'body'
+    ) as HTMLBodyElement;
     if (this.darkmodeEnabled) body.classList.add('darkMode');
     else body.classList.remove('darkMode');
   }
-
 }

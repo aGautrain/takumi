@@ -1,31 +1,46 @@
-<h2>NFTs<span *ngIf="wallet?.nfts?.length as nftsPossessed"> ({{ nftsPossessed }})</span></h2>
+<h2>
+  NFTs<span *ngIf="wallet?.nfts?.length as nftsPossessed">
+    ({{ nftsPossessed }})</span
+  >
+</h2>
 
 <mat-card class="nfts">
-
   <ng-container *ngIf="!wallet.nfts?.length; else nftCollection">
     <mat-icon color="accent">highlight_off</mat-icon>
     <span class="no-nft--text">
-      {{ wallet?.getAddress() ? 'Vous ne possédez aucun NFTs' : 'Connectez-vous pour visualiser vos NFTs' }}
+      {{
+        wallet?.getAddress()
+          ? "Vous ne possédez aucun NFTs"
+          : "Connectez-vous pour visualiser vos NFTs"
+      }}
     </span>
   </ng-container>
 
   <ng-template #nftCollection>
-
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
-
       <!-- on affiche une carte pour chaque NFT, avec l'image et le titre -->
       <!-- au clic on ouvre le dialogue qui montre les métadonnées -->
-      <mat-card *ngFor="let nft of wallet.nfts | sort:'title'" fxFlex="24%" fxFlex.lt-lg="30%" fxFlex.lt-md="48%" fxFlex.lt-sm="90%" class="nft" fxLayout="row wrap" fxLayoutAlign="center space-between"
-      (click)="openNFTMetadataDialog(nft)">
-
-        <img *ngIf="nft?.media?.length" [src]="nft.media[0].gateway"
-             [alt]="nft.metadata?.description" [title]="nft.metadata?.description" fxFlex="80" />
+      <mat-card
+        *ngFor="let nft of wallet.nfts | sort: 'title'"
+        fxFlex="24%"
+        fxFlex.lt-lg="30%"
+        fxFlex.lt-md="48%"
+        fxFlex.lt-sm="90%"
+        class="nft"
+        fxLayout="row wrap"
+        fxLayoutAlign="center space-between"
+        (click)="openNFTMetadataDialog(nft)"
+      >
+        <img
+          *ngIf="nft?.media?.length"
+          [src]="nft.media[0].gateway"
+          [alt]="nft.metadata?.description"
+          [title]="nft.metadata?.description"
+          fxFlex="80"
+        />
 
         <div class="nft--title" fxFlex="100">{{ nft.title }}</div>
-
       </mat-card>
-
     </div>
   </ng-template>
-
 </mat-card>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 /*
     Premier service/API faite pour l'Ether
@@ -23,21 +22,22 @@ export interface EtherscanBalanceResult {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EtherscanApiService {
-
   private API_KEY = environment.etherscanApiKey;
   private API_ENDPOINT = 'https://api.etherscan.io/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getBalance(address: string): Promise<number> {
-    return this.http.get<EtherscanBalanceResult>(
-      `${this.API_ENDPOINT}?module=account&action=balance&address=${address}&tag=latest&apikey=${this.API_KEY}`
-    ).toPromise()
+    return this.http
+      .get<EtherscanBalanceResult>(
+        `${this.API_ENDPOINT}?module=account&action=balance&address=${address}&tag=latest&apikey=${this.API_KEY}`
+      )
+      .toPromise()
       .then((res: EtherscanBalanceResult | undefined) => {
-      return res?.result !== undefined ? parseInt(res.result, 10) : 0
-    });
+        return res?.result !== undefined ? parseInt(res.result, 10) : 0;
+      });
   }
 }

@@ -1,13 +1,15 @@
 mat-drawer {
-    width: 200px;
+  width: 200px;
 }
 
 mat-nav-list {
-    padding-top: 0;
+  padding-top: 0;
 }
 
-mat-drawer-container { min-height: calc(100% - 64px); }
+mat-drawer-container {
+  min-height: calc(100% - 64px);
+}
 
 mat-drawer-content {
-    padding-bottom: 10rem;
+  padding-bottom: 10rem;
 }

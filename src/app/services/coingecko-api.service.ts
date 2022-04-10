@@ -21,24 +21,27 @@ export interface CryptocurrencyChartData {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoinGeckoAPIService {
-
   private API_ENDPOINT = 'https://api.coingecko.com/api/v3';
 
-  constructor(private http: HttpClient, private symbol2id: SymbolToIdService) { }
+  constructor(private http: HttpClient, private symbol2id: SymbolToIdService) {}
 
   // renvoie les données sur 30 jours nécessaires à la construction d'un graphe
   getCryptocurrencyChart(symbol: string): Promise<CryptocurrencyChartData> {
-
     const coingeckoId = this.symbol2id.getCoinGeckoId(symbol);
 
-    return this.http.get<CryptocurrencyChartData>(`${this.API_ENDPOINT}/coins/${coingeckoId}/market_chart`, {
-      params: new HttpParams()
-        .set('vs_currency', 'eur')
-        .set('days', '30')
-        .set('interval', 'daily')
-    }).toPromise() as Promise<CryptocurrencyChartData>;
+    return this.http
+      .get<CryptocurrencyChartData>(
+        `${this.API_ENDPOINT}/coins/${coingeckoId}/market_chart`,
+        {
+          params: new HttpParams()
+            .set('vs_currency', 'eur')
+            .set('days', '30')
+            .set('interval', 'daily'),
+        }
+      )
+      .toPromise() as Promise<CryptocurrencyChartData>;
   }
 }

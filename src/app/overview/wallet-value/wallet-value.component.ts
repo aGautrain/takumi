@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {WalletService} from "../../services/wallet.service";
+import { WalletService } from '../../services/wallet.service';
 
 /*
   Composant très simple qui affiche la valeur totale du Wallet
@@ -8,10 +8,8 @@ import {WalletService} from "../../services/wallet.service";
 @Component({
   selector: 'app-wallet-value',
   templateUrl: './wallet-value.component.html',
-  styleUrls: ['./wallet-value.component.scss']
+  styleUrls: ['./wallet-value.component.scss'],
 })
 export class WalletValueComponent {
-
-  constructor(public wallet: WalletService) { }
-
+  constructor(public wallet: WalletService) {}
 }

@@ -1,7 +1,17 @@
-.darkMode mat-card.wallet-value { box-shadow: none; }
+.darkMode mat-card.wallet-value {
+  box-shadow: none;
+}
 
 mat-card.wallet-value {
-  font-size: 1.2rem; box-shadow: none; margin-bottom: .1rem;
-  mat-icon { vertical-align: middle; margin-right: .5rem; }
-  .wallet-value--text { position: relative; top: 2px; }
+  font-size: 1.2rem;
+  box-shadow: none;
+  margin-bottom: 0.1rem;
+  mat-icon {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  .wallet-value--text {
+    position: relative;
+    top: 2px;
+  }
 }
