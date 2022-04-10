@@ -1,3 +1,5 @@
+<!-- https://material.angular.io/components/toolbar/examples#toolbar-overview -->
+
 <mat-toolbar>
   <mat-toolbar-row>
     <button mat-icon-button *ngIf="mobile" (click)="toggleMenu.emit()">
@@ -34,6 +36,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<!-- https://material.angular.io/cdk/overlay/examples#cdk-overlay-basic -->
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="showGasPrices">
   <app-gas-card *ngIf="showGasPrices"></app-gas-card>
 </ng-template>

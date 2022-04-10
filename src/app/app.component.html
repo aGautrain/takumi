@@ -1,5 +1,8 @@
 <app-topbar [mobile]="mobileQuery.matches" (toggleMenu)="snav.toggle()"></app-topbar>
 
+
+<!-- Sidenav responsive (le mode change si on est sur mobile) -->
+<!-- https://material.angular.io/components/sidenav/examples#sidenav-responsive -->
 <mat-drawer-container>
     <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened>
 

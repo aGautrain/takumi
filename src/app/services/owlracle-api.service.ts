@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
-type SupportedSymbols = 'FTM' | 'MATIC' | 'AVAX' | 'BNB' | 'ETH'
 
-// TODO signature for /gas
+type SupportedSymbols = 'FTM' | 'MATIC' | 'AVAX' | 'BNB' | 'ETH'
 
 const symbolConverterForOwlracle: Record<SupportedSymbols, string> = {
   'FTM': 'ftm',

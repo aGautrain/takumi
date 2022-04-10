@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Asset, WalletService} from "../../services/wallet.service";
 import {map} from "rxjs/operators";
 
+/*
+  Composant qui affiche les cryptos possédées et leurs prix,
+  la logique est dans le WalletService, ici on fait principalement de l'affichage
+ */
+
 @Component({
   selector: 'app-assets',
   templateUrl: './assets.component.html',

@@ -1,3 +1,5 @@
+<!-- https://material.angular.io/components/dialog/examples#dialog-overview -->
+
 <h2 mat-dialog-title>Se connecter</h2>
 <mat-dialog-content class="mat-typography">
   <mat-form-field fxFlex class="search-field" appearance="outline">
@@ -7,5 +9,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Annuler</button>
-  <button mat-button [mat-dialog-close]="addressFormControl?.value">Rechercher les tokens</button>
+  <button mat-button [mat-dialog-close]="addressFormControl?.value">Rechercher les tokens</button> <!-- à la fermeture, on renvoie la valeur du champ adresse -->
 </mat-dialog-actions>

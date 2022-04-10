@@ -2,7 +2,18 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SymbolToIdService } from './symbol-to-id.service';
 
+/*
+  CoinGecko
+  https://www.coingecko.com/fr
 
+  permet d'obtenir l'évolution du prix d'une crypto et donc de construire
+  les graphes autour
+  (payant sur CoinMarket)
+
+ */
+
+// prices, market_caps, total_volumes sont organisés en tableau de paires
+// le premier élément de la paire, paire[0] est la date, le second, paire[1] la valeur
 export interface CryptocurrencyChartData {
   prices: Array<[number, number]>;
   market_caps: Array<[number, number]>;
@@ -18,6 +29,7 @@ export class CoinGeckoAPIService {
 
   constructor(private http: HttpClient, private symbol2id: SymbolToIdService) { }
 
+  // renvoie les données sur 30 jours nécessaires à la construction d'un graphe
   getCryptocurrencyChart(symbol: string): Promise<CryptocurrencyChartData> {
 
     const coingeckoId = this.symbol2id.getCoinGeckoId(symbol);

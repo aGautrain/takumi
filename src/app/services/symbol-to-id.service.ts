@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+/*
+    Service pour convertir un symbole (par exemple avax) en id CoinGecko (=> avalanche-2)
+    On utilise quasi exclusivement des symboles dans l'application, mais certaines APIs ont leur propres identifiants
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,21 +16,12 @@ export class SymbolToIdService {
     'ftm': 'fantom',
     'matic': 'matic-network',
     'bnb': 'binancecoin'
-  }
-
-  coinmarketIdToSymbol: Record<string, string> = {
-    '1027': 'eth'
-  }
+  };
 
   constructor() { }
 
   getCoinGeckoId(symbol: string): string {
     return this.symbolToCoinGecko[symbol];
   }
-
-  getCoinmarketSymbolFromId(id: string): string {
-    return this.coinmarketIdToSymbol[id];
-  }
-
 
 }

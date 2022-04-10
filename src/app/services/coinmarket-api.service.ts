@@ -1,13 +1,14 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {map} from 'rxjs/operators';
+import {environment} from 'src/environments/environment';
+import {ALL_SUPPORTED_SYMBOLS, SupportedSymbol} from "./wallet.service";
 
 
 export interface CryptocurrencyInfo {
   id: number;
   name: string;
-  symbol: string;
+  symbol: SupportedSymbol;
   logo: string;
   slug: string;
   description: string;
@@ -35,15 +36,12 @@ export interface CryptocurrencyMarketInfo {
 })
 export class CoinmarketApiService {
 
-  // we should use an environment variable instead of writing API KEY
-  // to avoid leaks when exposing the code (github, etc.)
   private API_KEY = environment.coinmarketApiKey;
-
   private API_ENDPOINT = 'https://pro-api.coinmarketcap.com';
 
   constructor(private http: HttpClient) { }
 
-  getCryptosInfos(symbols: string[] = ['AVAX', 'ETH', 'BNB', 'FTM', 'MATIC']): Promise<Record<string, CryptocurrencyInfo>> {
+  getCryptosInfos(symbols: SupportedSymbol[] = ALL_SUPPORTED_SYMBOLS): Promise<Record<string, CryptocurrencyInfo>> {
 
     return this.http.get<{ data: Record<string, CryptocurrencyInfo[]> }>(this.API_ENDPOINT + '/v2/cryptocurrency/info', {
       params: new HttpParams()
@@ -60,7 +58,7 @@ export class CoinmarketApiService {
       .toPromise() as Promise<Record<string, CryptocurrencyInfo>>;
   }
 
-  getCryptosLatestMarketData(symbols: string[] = ['AVAX', 'ETH', 'BNB', 'FTM', 'MATIC']): Promise<Record<string, CryptocurrencyMarketInfo>> {
+  getCryptosLatestMarketData(symbols: string[] = ALL_SUPPORTED_SYMBOLS): Promise<Record<string, CryptocurrencyMarketInfo>> {
 
     return this.http.get<{ data: Record<string, { quote: { EUR: CryptocurrencyMarketInfo } }> }>(this.API_ENDPOINT + '/v1/cryptocurrency/quotes/latest', {
       params: new HttpParams()

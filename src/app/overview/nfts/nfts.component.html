@@ -13,6 +13,8 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
 
+      <!-- on affiche une carte pour chaque NFT, avec l'image et le titre -->
+      <!-- au clic on ouvre le dialogue qui montre les métadonnées -->
       <mat-card *ngFor="let nft of wallet.nfts | sort:'title'" fxFlex="24%" fxFlex.lt-lg="30%" fxFlex.lt-md="48%" fxFlex.lt-sm="90%" class="nft" fxLayout="row wrap" fxLayoutAlign="center space-between"
       (click)="openNFTMetadataDialog(nft)">
 
@@ -20,7 +22,6 @@
              [alt]="nft.metadata?.description" [title]="nft.metadata?.description" fxFlex="80" />
 
         <div class="nft--title" fxFlex="100">{{ nft.title }}</div>
-
 
       </mat-card>
 

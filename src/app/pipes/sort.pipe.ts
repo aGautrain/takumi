@@ -1,5 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
+// pipe pris sur Stackoverflow
+// https://stackoverflow.com/questions/35158817/orderby-pipe-issue
+// et qui permet dans une boucle angular *ngFor
+// de trier *ngFor="let nft of nfts | sort:'title'" (tri alphabétique sur le titre des nfts)
+
 @Pipe({
   name: "sort"
 })

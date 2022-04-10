@@ -1,6 +1,5 @@
 <h2>Actifs</h2>
 
-
 <mat-card *ngIf="!dataSource?.length; else assetsVisualizer" class="assets">
   <mat-icon color="accent">highlight_off</mat-icon>
   <span class="no-assets--text">
@@ -9,7 +8,12 @@
 </mat-card>
 
 <ng-template #assetsVisualizer>
+
+  <!-- affichage du total dans son wallet, en euros -->
   <app-wallet-value></app-wallet-value>
+
+  <!-- définition du tableau des cryptos avec affichage des prix/quantité possédée -->
+  <!-- https://material.angular.io/components/table/examples#table-basic -->
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
 

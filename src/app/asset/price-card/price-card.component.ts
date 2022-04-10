@@ -1,5 +1,13 @@
 import { Component, Input } from '@angular/core';
 
+
+/*
+    Petit composant réutilisable qui gère juste l'affichage d'un prix,
+    et l'évolution en % de celui-ci par rapport à une autre date/un autre prix
+
+    On l'affiche et le rafraichit au survol du graphique
+ */
+
 @Component({
   selector: 'app-price-card',
   templateUrl: './price-card.component.html',

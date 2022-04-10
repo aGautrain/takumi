@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, SimpleChange, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { OwlracleApiService } from 'src/app/services/owlracle-api.service';
+import {SupportedSymbol} from "../../../services/wallet.service";
 
 interface Speed {
   acceptance: number; gasPrice: number; estimatedFee: number;
@@ -9,12 +10,11 @@ interface Speed {
   selector: 'app-gas-prices',
   templateUrl: './gas-prices.component.html',
   styleUrls: ['./gas-prices.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class GasPricesComponent {
 
-  @Input() crypto: string | undefined;
+  @Input() crypto: SupportedSymbol | undefined;
   estimations: any;
 
   slowGas: number = 0;
@@ -22,8 +22,9 @@ export class GasPricesComponent {
   fastGas: number = 0;
   instantGas: number = 0;
 
-  constructor(private owlracleApi: OwlracleApiService, private _cdr: ChangeDetectorRef) { }
+  constructor(private owlracleApi: OwlracleApiService) { }
 
+  // quand on change de crypto sélectionnée, on récupère les nouvelles estimations des prix du gas
   async ngOnChanges(changes: SimpleChanges) {
     const nextCrypto = changes['crypto']?.currentValue !== changes['crypto'].previousValue && changes['crypto'].currentValue;
 
@@ -45,14 +46,12 @@ export class GasPricesComponent {
         this.averageGas = Math.round(acceptanceToGasPrice[acceptanceSorted[1]]);
         this.fastGas = Math.round(acceptanceToGasPrice[acceptanceSorted[2]]);
         this.instantGas = Math.round(acceptanceToGasPrice[acceptanceSorted[3]]);
-        this._cdr.markForCheck();
       }
     } else {
       this.slowGas = 5;
       this.averageGas = 5;
       this.fastGas = 5;
       this.instantGas = 5;
-      this._cdr.markForCheck();
     }
   }
 

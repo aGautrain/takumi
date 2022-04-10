@@ -5,13 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverviewComponent } from './overview/overview.component';
-import { HistoryComponent } from './overview/history/history.component';
 import { AssetsComponent } from './overview/assets/assets.component';
 import { WalletValueComponent } from './overview/wallet-value/wallet-value.component';
 import { AssetComponent } from './asset/asset.component';
-import { MarketValueComponent } from './asset/market-value/market-value.component';
 import { TopbarComponent } from './topbar/topbar.component';
-import { MenuComponent } from './menu/menu.component'
 import { HttpClientModule } from '@angular/common/http';
 
 import { GasCardComponent } from './topbar/gas-card/gas-card.component';
@@ -46,21 +43,22 @@ const materialModules = [
   FlexLayoutModule,
   MatListModule,
   MatSidenavModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatTableModule,
+  MatDialogModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatButtonModule,
 ];
-
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
-    HistoryComponent,
     AssetsComponent,
     WalletValueComponent,
     AssetComponent,
-    MarketValueComponent,
     TopbarComponent,
-    MenuComponent,
     GasCardComponent,
     GasPricesComponent,
     LineChartComponent,
@@ -77,12 +75,7 @@ const materialModules = [
     HttpClientModule,
     ...materialModules,
     ReactiveFormsModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatButtonModule,
     OverlayModule,
-    MatTableModule,
-    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

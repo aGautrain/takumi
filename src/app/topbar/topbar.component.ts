@@ -3,6 +3,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddressDialogComponent} from "../address-dialog/address-dialog.component";
 import {WalletService} from "../services/wallet.service";
 
+/*
+    Barre du haut avec différents boutons cliquables (darkmode, menu responsive, prix du gas, adresse)
+ */
+
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',

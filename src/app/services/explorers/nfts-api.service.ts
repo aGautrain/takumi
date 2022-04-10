@@ -2,11 +2,17 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 
+
+/*
+    Service pour récupérer les NFTs d'une adresse + les metadonnées associées
+ */
+
 export interface NFTCollectionResult {
   ownedNfts: OwnedNFT[];
   total_count: number;
 }
 
+// interface écrite en observant le retour de l'API Alchemy
 export interface OwnedNFT {
   contract: { address: string; };
   id: {
@@ -50,11 +56,11 @@ export class NftsApiService {
     ).pipe(
       map((response) => {
 
-        // excluding incorrect NFTs
+        // on exclue les NFTS qui ne sont pas ERC721, ou ceux qui n'ont pas pu être bien récupéré
         response.ownedNfts = response.ownedNfts.filter(nft => !nft?.error && nft?.id?.tokenMetadata?.tokenType === 'ERC721');
 
         response.ownedNfts = response.ownedNfts.map(nft => {
-          // special catch for Reactor NFTs thumbnail urls
+          // les NFTS Reactor ont un problème d'url (ils ont thumbnails/XXX au lieu de thumbnails_cars/XXX, corrigé manuellement ici
           if (nft?.contract?.address === '0x6f9eb87f5a5638a3424c68ffae824608671f4ea6') {
             nft.media[0].gateway = nft.media[0].gateway.replace('thumbnails', 'thumbnails_cars');
           }

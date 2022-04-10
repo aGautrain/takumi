@@ -1,3 +1,4 @@
+<!-- Le titre de la page par exemple : ETHER eth (+ le logo) -->
 <div fxLayout="row">
     <h1 *ngIf="assetInfos" class="title" fxFlex>
         <img [src]="assetInfos.logo" /> {{ assetInfos.name }} <span class="title-symbol">{{ assetInfos.symbol }}</span>
@@ -5,6 +6,7 @@
 </div>
 
 
+<!-- graphique (ou chargement avec mat-spinner) + prix + description de la crypto obtenue via coinmarket -->
 <div fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="20px">
 
     <app-line-chart fxFlex="95" [fxFlex.gt-sm]="80" [fxFlex.gt-md]="70" [fxFlex.gt-lg]="60" fxFlexOrder="2" [fxFlexOrder.gt-md]="3"
@@ -27,12 +29,5 @@
     <mat-card-title>Description</mat-card-title>
     <mat-card-content>{{ assetInfos?.description }}</mat-card-content>
   </mat-card>
-
-
-    <!--<div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex="50" fxFlexOrder="1" fxFlexOrder.gt-sm="3">
-
-
-
-    </div>-->
 
 </div>

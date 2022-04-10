@@ -16,6 +16,15 @@ export enum SupportedSymbol {
   Polygon = 'MATIC'
 }
 
+export const ALL_SUPPORTED_SYMBOLS: SupportedSymbol[] = [
+  SupportedSymbol.Avalanche,
+  SupportedSymbol.Binance,
+  SupportedSymbol.Ethereum,
+  SupportedSymbol.Fantom,
+  SupportedSymbol.Polygon
+];
+
+
 export interface Blockchain {
   name: string;
 }
@@ -66,24 +75,9 @@ export class WalletService {
               private PolygonApi: PolygonApiService,
               ) { }
 
-  private convertWeiToEth(wei: number): number {
-    return wei / 1000000000000000000;
-  }
 
-  private convertWavaxToAvax(wavax: number): number {
-    return wavax / 1000000000000000000;
-  }
-
-  private convertWftmToFantom(wftm: number): number {
-    return wftm / 1000000000000000000;
-  }
-
-  private convertWbnbToBnb(wbnb: number): number {
-    return wbnb / 1000000000000000000;
-
-  }
-  private convertWmaticToMatic(wmatic: number): number {
-    return wmatic / 1000000000000000000;
+  private convertWUnitToUnit(w: number): number {
+    return w / 1000000000000000000;
   }
 
   getAddress(): string {
@@ -99,27 +93,27 @@ export class WalletService {
     if (this.address) {
       const wei = await this.etherscanApi.getBalance(this.address);
       this.assets[SupportedSymbol.Ethereum] = {
-        quantity: this.convertWeiToEth(wei)
+        quantity: this.convertWUnitToUnit(wei)
       };
 
       const wavax = await this.avaxApi.getBalance(this.address);
       this.assets[SupportedSymbol.Avalanche] = {
-        quantity: this.convertWavaxToAvax(wavax)
+        quantity: this.convertWUnitToUnit(wavax)
       };
 
       const wftm = await this.fantomApi.getBalance(this.address);
       this.assets[SupportedSymbol.Fantom] = {
-        quantity: this.convertWftmToFantom(wftm)
+        quantity: this.convertWUnitToUnit(wftm)
       };
 
       const wbnb = await this.BscscanApi.getBalance(this.address);
       this.assets[SupportedSymbol.Binance] = {
-        quantity: this.convertWbnbToBnb(wbnb)
+        quantity: this.convertWUnitToUnit(wbnb)
       };
 
       const wmatic = await this.PolygonApi.getBalance(this.address);
       this.assets[SupportedSymbol.Polygon] = {
-        quantity: this.convertWmaticToMatic(wmatic)
+        quantity: this.convertWUnitToUnit(wmatic)
       };
 
       await this.loadAssetsInfos();
@@ -129,9 +123,9 @@ export class WalletService {
   async loadAssetsInfos() {
     if (!this.assets) return;
 
-    const infos = await this.coinmarketApi.getCryptosInfos(Object.keys(this.assets));
+    const infos = await this.coinmarketApi.getCryptosInfos(Object.keys(this.assets) as SupportedSymbol[]);
 
-    // populating assets infos from coinmarket result
+    // on utilise les infos retournées par CoinMarket (logo, nom, etc.)
     Object.entries(infos).forEach(([symbol, cryptoInfos]) => {
       if (symbol && this.assets[symbol] !== undefined) {
         this.assets[symbol] = {
@@ -143,6 +137,7 @@ export class WalletService {
       }
     });
 
+    // et une route pour récupérer via CoinMarket les évolutions des cryptos
     const market = await this.coinmarketApi.getCryptosLatestMarketData();
     Object.entries(market).forEach(([symbol, cryptoMarketInfos]) => {
       if (symbol && this.assets[symbol] !== undefined) {
@@ -168,10 +163,10 @@ export class WalletService {
   }
 
   async loadNFTS() {
-
     if (!this.address) return;
 
     const collection = await this.nftsApi.getNFTS(this.address);
     if (collection?.ownedNfts) this.nfts = collection.ownedNfts;
+    else this.nfts = [];
   }
 }
