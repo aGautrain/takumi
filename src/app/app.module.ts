@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GasCardComponent } from './topbar/gas-card/gas-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
@@ -36,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MetadataDialogComponent } from './overview/nfts/metadata-dialog/metadata-dialog.component';
 
 const materialModules = [
+  MatAutocompleteModule,
   MatProgressSpinnerModule,
   MatCardModule,
   MatSelectModule,
@@ -80,4 +82,4 @@ const materialModules = [
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddressDialogComponent } from '../address-dialog/address-dialog.component';
+import { AddressHistoryService } from '../services/address-history.service';
 import { WalletService } from '../services/wallet.service';
 
 /*
@@ -23,24 +24,33 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     private _dialog: MatDialog,
+    private addressHistory: AddressHistoryService,
     public walletService: WalletService
-  ) {}
+  ) { }
 
   async ngOnInit() {
-    if (!this.walletService?.getAddress()) await this.openAddressDialog();
+    if (this.addressHistory.getLastAddress()) await this.useAddress(this.addressHistory.getLastAddress());
+    else if (!this.walletService?.getAddress()) await this.openAddressDialog();
   }
 
   async openAddressDialog() {
     const dialogRef = this._dialog.open(AddressDialogComponent, {
       minWidth: '40vw',
+      data: {
+        knownAddresses: this.addressHistory.getAddresses(),
+        currentAddress: this.walletService.getAddress()
+      }
     });
 
     const address = await dialogRef.afterClosed().toPromise();
-    if (address) {
-      this.walletService.setAddress(address);
-      await this.walletService.loadAssets();
-      await this.walletService.loadNFTS();
-    }
+    if (address) await this.useAddress(address);
+  }
+
+  private async useAddress(address: string) {
+    this.addressHistory.putAddress(address);
+    this.walletService.setAddress(address);
+    await this.walletService.loadAssets();
+    await this.walletService.loadNFTS();
   }
 
   switchDarkmode() {

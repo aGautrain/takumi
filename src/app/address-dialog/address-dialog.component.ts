@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /*
   Composant qui affiche un formulaire de connexion,
@@ -18,7 +19,13 @@ export class AddressDialogComponent implements OnInit {
   // champ pour renseigner l'adresse
   addressFormControl: FormControl = new FormControl('');
 
-  constructor() {}
+  knownAddresses: string[] = [];
+  currentAddress: string = '';
 
-  ngOnInit(): void {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { knownAddresses: string[], currentAddress: string }) { }
+
+  ngOnInit(): void {
+    this.knownAddresses = this.data.knownAddresses;
+    this.currentAddress = this.data.currentAddress;
+  }
 }
