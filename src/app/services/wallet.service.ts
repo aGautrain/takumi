@@ -7,6 +7,7 @@ import { AvaxApiService } from './explorers/avax-api.service';
 import { FantomApiService } from './explorers/fantom-api.service';
 import { BinanceApiService } from './explorers/binance-api.service';
 import { PolygonApiService } from './explorers/polygon-api.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 export enum SupportedSymbol {
   Avalanche = 'AVAX',
@@ -48,6 +49,9 @@ export interface Asset {
   providedIn: 'root',
 })
 export class WalletService {
+
+  private API_ENDPOINT = 'http://localhost:1337';
+
   private address: string = '';
 
   assets: Record<string, Partial<Asset>> = {};
@@ -65,6 +69,7 @@ export class WalletService {
   }
 
   constructor(
+    private http: HttpClient,
     private coinmarketApi: CoinmarketApiService,
     private etherscanApi: EtherscanApiService,
     private avaxApi: AvaxApiService,
@@ -86,33 +91,25 @@ export class WalletService {
     this.address = address;
   }
 
+  async fetchWalletBalance() {
+    return this.http
+      .get<any>(this.API_ENDPOINT + '/getWallet', {
+        params: new HttpParams().set('address', this.address),
+      })
+      .toPromise();
+  }
+
   async loadAssets() {
-    // load assets based on address and given explorer API
+
     if (this.address) {
-      const wei = await this.etherscanApi.getBalance(this.address);
-      this.assets[SupportedSymbol.Ethereum] = {
-        quantity: this.convertWUnitToUnit(wei),
-      };
+      const walletData = await this.fetchWalletBalance();
+      console.info('loading assets based on local API', walletData);
 
-      const wavax = await this.avaxApi.getBalance(this.address);
-      this.assets[SupportedSymbol.Avalanche] = {
-        quantity: this.convertWUnitToUnit(wavax),
-      };
+      const symbols = Object.values(SupportedSymbol);
 
-      const wftm = await this.fantomApi.getBalance(this.address);
-      this.assets[SupportedSymbol.Fantom] = {
-        quantity: this.convertWUnitToUnit(wftm),
-      };
-
-      const wbnb = await this.BscscanApi.getBalance(this.address);
-      this.assets[SupportedSymbol.Binance] = {
-        quantity: this.convertWUnitToUnit(wbnb),
-      };
-
-      const wmatic = await this.PolygonApi.getBalance(this.address);
-      this.assets[SupportedSymbol.Polygon] = {
-        quantity: this.convertWUnitToUnit(wmatic),
-      };
+      symbols.forEach(symbol => {
+        this.assets[symbol] = { quantity: walletData[symbol] };
+      });
 
       await this.loadAssetsInfos();
     }

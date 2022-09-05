@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Input,
   OnInit,
@@ -43,6 +42,7 @@ export class GasPricesComponent {
     if (nextCrypto && nextCrypto !== 'BNB') {
       this.crypto = nextCrypto;
       this.estimations = await this.owlracleApi.getGas(nextCrypto);
+      console.info('return from local API', this.estimations);
 
       let { speeds }: { speeds: Speed[] } = this.estimations;
 
@@ -55,12 +55,11 @@ export class GasPricesComponent {
         .map((acceptance) => parseFloat(acceptance))
         .sort();
 
-      if (acceptanceSorted?.length >= 4) {
-        this.slowGas = Math.round(acceptanceToGasPrice[acceptanceSorted[0]]);
-        this.averageGas = Math.round(acceptanceToGasPrice[acceptanceSorted[1]]);
-        this.fastGas = Math.round(acceptanceToGasPrice[acceptanceSorted[2]]);
-        this.instantGas = Math.round(acceptanceToGasPrice[acceptanceSorted[3]]);
-      }
+        this.slowGas = acceptanceToGasPrice[acceptanceSorted[0]] ? Math.round(acceptanceToGasPrice[acceptanceSorted[0]]) : -1;
+        this.averageGas = acceptanceToGasPrice[acceptanceSorted[1]] ? Math.round(acceptanceToGasPrice[acceptanceSorted[1]]) : -1;
+        this.fastGas = acceptanceToGasPrice[acceptanceSorted[2]] ? Math.round(acceptanceToGasPrice[acceptanceSorted[2]]) : -1;
+        this.instantGas = acceptanceToGasPrice[acceptanceSorted[3]] ? Math.round(acceptanceToGasPrice[acceptanceSorted[3]]) : -1;
+
     } else {
       this.slowGas = 5;
       this.averageGas = 5;
